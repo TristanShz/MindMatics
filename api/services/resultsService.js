@@ -1,2 +1,6 @@
+const Result = require("../models/Result");
 
-// creer la fonction qui recupere les resultats
+
+exports.getAll = () => {
+    return Result.find({}).select({user:1, score:1, }).exec();
+}

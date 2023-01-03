@@ -1,7 +1,13 @@
-const Result = require("../models/Result");
+
+const resultsService = require("../services/resultsService");
 
 // creer la fonction qui appelle la fonction du service pour recuperer les resultats
 
+exports.Result = async (req, res) =>{
+   const results = await resultsService.getAll
+    return res.status(200).json({data:results});
+
+}
 /**
  * Retrieve all result using filter for difficulty and order by 
  * @param {*} req 
