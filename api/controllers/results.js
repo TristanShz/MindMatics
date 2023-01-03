@@ -1,4 +1,6 @@
-const resultModel = require("../models/Result");
+const Result = require("../models/Result");
+
+// creer la fonction qui appelle la fonction du service pour recuperer les resultats
 
 /**
  * Retrieve all result using filter for difficulty and order by 
@@ -9,7 +11,7 @@ const resultModel = require("../models/Result");
 exports.retrieveFilteredResults = (req, res) => {
     console.log('retrieveFilteredResults');
     console.log(req.body); // difficulty and order eventually
-    console.log(resultModel.find());
+    console.log(Result.find());
     return res.status(200).json({data: "ok"});
 };
 

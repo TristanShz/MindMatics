@@ -1,9 +1,9 @@
 const express = require("express");
-const userController = require("../controllers/results");
+const resultController = require("../controllers/results");
 const router = express.Router();
 
 router.get("/", (req, res) => {
-    res.send("Hello World!");
+    // appeler la fonction du controler pour recuperer tous les resultats
 });
 
 module.exports = router;
