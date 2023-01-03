@@ -1,11 +1,10 @@
 const jwt = require("jsonwebtoken");
-require("dotenv").config();
-const apiConfig = require('../_config/apiConfig');
+const apiConfig = require("../_config/apiConfig");
 
 const checkTokenMiddleware = (req, res, next) => {
-  const token = req.headers.authorization.split(" ");
+  const token = req.headers.authorization?.split(" ");
 
-  if (!token[1]) {
+  if (!token?.[1]) {
     return res.status(401).json({ message: "Error. Need a token" });
   }
   jwt.verify(token[1], apiConfig.jwtSecret, (err, decodedToken) => {

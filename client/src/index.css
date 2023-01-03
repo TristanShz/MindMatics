@@ -12,11 +12,10 @@ html, body, #root {
     font-family: 'Courier', sans-serif;
     font-size: 16px;
     line-height: 1.5;
-    color: #333;
   }
 
   body {
-    @apply bg-slate-900;
+    @apply bg-slate-900 text-slate-300
   }
 
   h1 {
@@ -46,4 +45,5 @@ html, body, #root {
   p {
     @apply text-base text-slate-300;
   }
+
 }

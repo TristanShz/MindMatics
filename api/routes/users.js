@@ -1,18 +1,20 @@
 const express = require("express");
-const userController = require("../controllers/users");
+const usersController = require("../controllers/users");
 const router = express.Router();
+const checkJwtToken = require("../middlewares/checkJwtToken");
 
 router.get("/", (req, res) => {
   res.send("Hello World!");
 });
 
-router.post('/register', userController.register);
+router.post("/register", usersController.register);
 
-router.get('/login', userController.login);
+router.post("/login", usersController.login);
 
-router.post('/getAllUsers', userController.retrieveAllUsers);
+router.get("/getLoggedInUser", checkJwtToken, usersController.getSession);
 
-router.get('/getUserByPseudo', userController.retrieveUserByPseudo);
+router.post("/getAllUsers", usersController.retrieveAllUsers);
 
+router.get("/getUserByPseudo", usersController.retrieveUserByPseudo);
 
 module.exports = router;

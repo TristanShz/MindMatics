@@ -1,5 +1,5 @@
 export const appConfig = {
-  apiPath: process.env.API_URL,
+  apiPath: "http://localhost:3001/api/v1",
 };
 
 export const DIFFICULTY = {
