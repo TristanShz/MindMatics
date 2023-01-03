@@ -14,7 +14,7 @@ const resultSchema = new Schema({
   difficulty: {
     type: Number,
     required: true,
-  }
+  },
 });
 
 module.exports = mongoose.model("Result", resultSchema);

@@ -1,7 +1,7 @@
 const { DIFFICULTY } = require("../../client/src/_config/appConfig");
 const apiConfig = {
   apiPath: "/api/v1",
-  jwtSecret: process.env.jwtSecret,
+  jwtSecret: process.env.JWT_SECRET,
 
   mongo: {
     user: process.env.MONGO_USER,

@@ -1,4 +1,3 @@
-const userModel = require("../models/User");
 const usersService = require("../services/usersService")
 const jwt = require("jsonwebtoken");
 const apiConfig = require('../_config/apiConfig');
@@ -24,6 +23,11 @@ exports.register = async (req, res) => {
     res.status(200).json({data: createdUser});
 }
 
+/**
+ * Login if data are filled and if user exist
+ * @param {*} req 
+ * @param {*} res 
+ */
 exports.login = async (req, res) => {
     if(!req.body.password || !req.body.pseudo){
         res.status(400).json({error: 'Password or pseudo is empty'});
@@ -32,7 +36,7 @@ exports.login = async (req, res) => {
     if(!existingUser){
         res.status(400).json({error: 'User not found'});
     }
-    const checkPassword = await usersService.checkPassword(req.body.password, existingUser.password);
+    const checkPassword = await usersService.comparePasswords(req.body.password, existingUser.password);
     if(!checkPassword){
         res.status(400).json({error: 'Wrong password'});
     }else{
@@ -54,10 +58,9 @@ exports.login = async (req, res) => {
  * @param {*} res 
  * @returns 
  */
-exports.retrieveAllUsers = (req, res) => {
-    console.log('retrieveAllUsers');
-    console.log(userModel.find());
-    return res.status(200).json({data: "ok"});
+exports.retrieveAll = async (req, res) => {
+    const existingUsers = await usersService.getAllUser();
+    return res.status(200).json({data: existingUsers});
 };
 
 /**
@@ -66,7 +69,7 @@ exports.retrieveAllUsers = (req, res) => {
  * @param {*} res 
  * @returns 
  */
-exports.retrieveUserByPseudo = (req, res) => {
-    console.log(`retrieveUserByPseudo : ${req.body.pseudo}`);
-    return res.status(200).json({data: req.body.pseudo});
+exports.retrieveByPseudo = async (req, res) => {
+    const existingUser = await usersService.getUserByPseudo(req.body.pseudo);
+    return res.status(200).json({data: existingUser});
 };
