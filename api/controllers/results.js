@@ -1,6 +1,15 @@
 const resultsService = require("../services/resultsService");
 const usersService = require("../services/usersService");
 
+/**
+ * get all results
+ * @param {*} req 
+ * @param {*} res 
+ */
+exports.getAll = async (req, res) => {
+    const results = await resultsService.getAll();
+    res.status(200).json({data: results});
+}
 
 /**
  * create Result

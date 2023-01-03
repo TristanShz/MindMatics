@@ -1,16 +1,12 @@
 const express = require("express");
-const ResultController = require("../controllers/results");
+const resultController = require("../controllers/results");
 const router = express.Router();
 
 const verifyJwtToken = require("../middlewares/checkJwtToken");
 
-router.get("/", (req, res) => {
-    res.send("Hello World!");
-});
+router.get("/", resultController.getAll);
 
-router.post("/create", verifyJwtToken, (req, res) => {
-    res.send(ResultController.create);
-});
+router.post("/create", verifyJwtToken, resultController.create);
 
 
 module.exports = router;
