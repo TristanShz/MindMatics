@@ -10,7 +10,6 @@ connect().catch((err) => console.log(err));
 
 //Configuration de express
 const express = require("express");
-const http = require("http");
 const app = express();
 
 app.use(bodyParser.json());
@@ -22,10 +21,8 @@ app.use(cors({ origin: "*" }));
 app.use(apiConfig.apiPath + "/results", router.results);
 app.use(apiConfig.apiPath + "/users", router.users);
 
-const port = process.env.PORT;
+app.get("/", (req, res) => {
+  res.status(200).send("Hello World!");
+});
 
-app.set("port", port);
-
-const server = http.createServer(app);
-
-server.listen(port);
+module.exports = app;
