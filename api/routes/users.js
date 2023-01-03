@@ -10,9 +10,9 @@ router.post('/register', userController.register);
 
 router.get('/login', userController.login);
 
-router.post('/getAllUsers', userController.retrieveAllUsers);
+router.post('/getAllUsers', userController.retrieveAll);
 
-router.get('/getUserByPseudo', userController.retrieveUserByPseudo);
+router.get('/getUserByPseudo', userController.retrieveByPseudo);
 
 
 module.exports = router;

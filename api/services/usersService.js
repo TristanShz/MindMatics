@@ -17,4 +17,8 @@ exports.hashPassword = (password) => {
 
 exports.comparePasswords = async (plainTextPassword, hash) => {
     return await bcrypt.compare(plainTextPassword, hash);
-  };
+}
+
+exports.getAllUser = () => {
+    return User.find({});
+}
