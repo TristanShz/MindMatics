@@ -6,3 +6,44 @@ html, body, #root {
     width: 100%;
     height: 100%;
 }
+
+@layer base {
+    html {
+        font-family: 'Roboto', sans-serif;
+        font-size: 16px;
+        line-height: 1.5;
+        color: #333;
+    }
+
+    body {
+        @apply bg-slate-900;
+    }
+
+    h1 {
+        @apply text-5xl font-bold text-slate-50;
+    }
+
+    h2 {
+        @apply text-4xl font-bold text-slate-50;
+    }
+
+    h3 {
+        @apply text-3xl font-medium text-slate-50;
+    }
+
+    h4 {
+        @apply text-2xl font-bold text-slate-50;
+    }
+
+    h5 {
+        @apply text-xl font-bold text-slate-50;
+    }
+
+    h6 {
+        @apply text-lg font-bold text-slate-50;
+    }
+
+    p {
+        @apply text-base text-slate-300;
+    }
+}
