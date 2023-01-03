@@ -1,5 +1,5 @@
-const resultsService = require("../services/resultsService")
-const jwt = require("jsonwebtoken");
+const resultsService = require("../services/resultsService");
+const usersService = require("../services/usersService");
 
 
 /**
@@ -8,11 +8,15 @@ const jwt = require("jsonwebtoken");
  * @param {*} res 
  */
 exports.create = async (req, res) => {
-    if (!req.body.userId || !req.body.score || !req.body.difficulty){
+    if (!req.body.score || !req.body.difficulty){
         res.status(400).json({error: 'At least one field is empty'});
     }
+    const loggedUser = usersService.getLoggedUser();
+    if(!loggedUser){
+        res.status(500).json({error: 'No user logged in'});
+    }
     const result = {
-        user: req.body.userId,
+        user: loggedUser,
         score: req.body.score,
         difficulty: req.body.difficulty,
     }
