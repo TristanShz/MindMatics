@@ -2,6 +2,7 @@ import { ToastContainer } from "react-toastify";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import { Home } from "./pages";
 import { Helmet } from "react-helmet";
+import RegularLayout from "./components/layouts/RegularLayout";
 
 function App() {
   return (
@@ -17,13 +18,13 @@ function App() {
       <Helmet>
         <title>Mindmatics</title>
       </Helmet>
-      <main>
+      <RegularLayout>
         <BrowserRouter>
           <Routes>
             <Route index element={<Home />} />
           </Routes>
         </BrowserRouter>
-      </main>
+      </RegularLayout>
     </>
   );
 }
