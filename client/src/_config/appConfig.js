@@ -1,11 +1,9 @@
-const appConfig = {
-  apiPath: process.env.API_URL,
+export const appConfig = {
+  apiPath: "http://localhost:3001/api/v1",
 };
 
-const DIFFICULTY = {
+export const DIFFICULTY = {
   EASY: 1,
   NORMAL: 2,
   HARD: 3,
 };
-
-module.exports = { appConfig, DIFFICULTY };
