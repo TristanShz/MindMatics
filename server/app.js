@@ -21,7 +21,7 @@ app.use(cors({ origin: "*" }));
 app.use(apiConfig.apiPath + "/results", router.results);
 app.use(apiConfig.apiPath + "/users", router.users);
 
-app.get("/", (req, res) => {
+app.get(apiConfig.apiPath, (req, res) => {
   res.status(200).send("Hello World!");
 });
 
