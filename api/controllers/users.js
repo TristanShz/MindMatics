@@ -23,6 +23,11 @@ exports.register = async (req, res) => {
     res.status(200).json({data: createdUser});
 }
 
+/**
+ * Login if data are filled and if user exist
+ * @param {*} req 
+ * @param {*} res 
+ */
 exports.login = async (req, res) => {
     if(!req.body.password || !req.body.pseudo){
         res.status(400).json({error: 'Password or pseudo is empty'});
