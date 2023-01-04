@@ -8,6 +8,7 @@ import { Link } from "react-router-dom";
 import { ROUTES } from "../_config/routes";
 import TitleBlock from "../components/ui/TitleBlock";
 import { gameConfig } from "../_config/gameConfig";
+import { useEffect } from "react";
 
 const user = {
   pseudo: "player 1",
@@ -19,27 +20,75 @@ const scores = [
       pseudo: "player 1",
     },
     score: 24,
-    difficulty: 2,
+    difficulty: 'NORMAL',
   },
   {
     user: {
       pseudo: "player 2",
     },
     score: 45,
-    difficulty: 1,
+    difficulty: 'HARD',
   },
   {
     user: {
       pseudo: "player 1",
     },
     score: 5,
-    difficulty: 3,
+    difficulty: 'EASY',
+  },
+  {
+    user: {
+      pseudo: "player 1",
+    },
+    score: 67,
+    difficulty: 'NORMAL',
+  },
+  {
+    user: {
+      pseudo: "player 1",
+    },
+    score: 78,
+    difficulty: 'NORMAL',
+  },
+  {
+    user: {
+      pseudo: "player 2",
+    },
+    score: 2,
+    difficulty: 'HARD',
+  },
+  {
+    user: {
+      pseudo: "player 1",
+    },
+    score: 167,
+    difficulty: 'HARD',
+  },
+  {
+    user: {
+      pseudo: "player 3",
+    },
+    score: 90,
+    difficulty: 'HARD',
   },
 ];
 
 const Home = () => {
   const [playerSelected, setPlayerSelected] = useState();
   const [difficultySelected, setDifficultySelected] = useState();
+  // const [scores, setScores] = useState();
+
+  // const fetchData = async () => {
+  //   const response = await fetch('http://localhost:3001/api/v1/results/');
+  //   console.log(response);
+  //   setScores(response.json());
+  // }
+
+  // useEffect(() => {
+  //   fetchData();
+  // }, [scores])
+
+  // console.log(scores);
 
   return (
     <>

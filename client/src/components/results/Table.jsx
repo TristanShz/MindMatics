@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 
 const Table = (props) => {
 
-    props.scores.sort((firstObject, secondObject) => (firstObject.score < secondObject.score ? 1 : -1)).map((score, index) => score.id = index + 1);
+    if (props.scores !== undefined) props.scores.sort((firstObject, secondObject) => (firstObject.score < secondObject.score ? 1 : -1)).map((score, index) => score.id = index + 1);
 
     const [results, setResults] = useState();
 
@@ -25,7 +25,7 @@ const Table = (props) => {
             <div className="overflow-x-auto sm:mx-0.5 lg:mx-0.5">
                 <div className="py-2 inline-block min-w-full sm:px-6 lg:px-8">
                     <div className="overflow-hidden">
-                        <table className="min-w-full">
+                        <table className="min-w-full" data-testid="resultsTable">
                             <thead className="bg-white border-b">
                                 <tr>
                                     <th scope="col" className="text-sm font-medium text-gray-900 px-6 py-4 text-left">
@@ -42,17 +42,17 @@ const Table = (props) => {
                                     </th>
                                 </tr>
                             </thead>
-                            <tbody>
+                            <tbody data-testid="tableBody">
                                 {results && results.map((r) =>
-                                    <tr className="bg-gray-100 border-b" key={r.id}>
+                                    <tr className="bg-gray-100 border-b" key={r.id} data-testid="gridRow">
                                         <td className="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900 text-left">{r.id}</td>
-                                        <td className="text-sm text-gray-900 font-light px-6 py-4 whitespace-nowrap text-left">
+                                        <td className="text-sm text-gray-900 font-light px-6 py-4 whitespace-nowrap text-left" data-testid={r.user.pseudo}>
                                             {r.user.pseudo}
                                         </td>
                                         <td className="text-sm text-gray-900 font-light px-6 py-4 whitespace-nowrap text-left">
                                             {r.score}
                                         </td>
-                                        <td className="text-sm text-gray-900 font-light px-6 py-4 whitespace-nowrap text-left">
+                                        <td className="text-sm text-gray-900 font-light px-6 py-4 whitespace-nowrap text-left" data-testid={r.difficulty === 'EASY' ? 'easyCell' : r.difficulty === 'NORMAL' ? 'normalCell' : 'hardCell'} >
                                             {r.difficulty}
                                         </td>
                                     </tr>
