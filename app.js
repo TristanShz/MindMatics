@@ -1,9 +1,9 @@
 require("dotenv").config();
-const connect = require("./api/src/_config/db.config");
+const connect = require("./api/_config/db.config");
 const cors = require("cors");
-const apiConfig = require("./api/src/_config/apiConfig");
+const apiConfig = require("./api/_config/apiConfig");
 const bodyParser = require("body-parser");
-const router = require("./api/src/_config/router");
+const router = require("./api/_config/router");
 
 //Connexion à la base de données
 connect().catch((err) => console.log(err));
