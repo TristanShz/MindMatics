@@ -14,81 +14,81 @@ const user = {
   pseudo: "player 1",
 };
 
-const scores = [
-  {
-    user: {
-      pseudo: "player 1",
-    },
-    score: 24,
-    difficulty: 'NORMAL',
-  },
-  {
-    user: {
-      pseudo: "player 2",
-    },
-    score: 45,
-    difficulty: 'HARD',
-  },
-  {
-    user: {
-      pseudo: "player 1",
-    },
-    score: 5,
-    difficulty: 'EASY',
-  },
-  {
-    user: {
-      pseudo: "player 1",
-    },
-    score: 67,
-    difficulty: 'NORMAL',
-  },
-  {
-    user: {
-      pseudo: "player 1",
-    },
-    score: 78,
-    difficulty: 'NORMAL',
-  },
-  {
-    user: {
-      pseudo: "player 2",
-    },
-    score: 2,
-    difficulty: 'HARD',
-  },
-  {
-    user: {
-      pseudo: "player 1",
-    },
-    score: 167,
-    difficulty: 'HARD',
-  },
-  {
-    user: {
-      pseudo: "player 3",
-    },
-    score: 90,
-    difficulty: 'HARD',
-  },
-];
+// const scores = [
+//   {
+//     user: {
+//       pseudo: "player 1",
+//     },
+//     score: 24,
+//     difficulty: 'NORMAL',
+//   },
+//   {
+//     user: {
+//       pseudo: "player 2",
+//     },
+//     score: 45,
+//     difficulty: 'HARD',
+//   },
+//   {
+//     user: {
+//       pseudo: "player 1",
+//     },
+//     score: 5,
+//     difficulty: 'EASY',
+//   },
+//   {
+//     user: {
+//       pseudo: "player 1",
+//     },
+//     score: 67,
+//     difficulty: 'NORMAL',
+//   },
+//   {
+//     user: {
+//       pseudo: "player 1",
+//     },
+//     score: 78,
+//     difficulty: 'NORMAL',
+//   },
+//   {
+//     user: {
+//       pseudo: "player 2",
+//     },
+//     score: 2,
+//     difficulty: 'HARD',
+//   },
+//   {
+//     user: {
+//       pseudo: "player 1",
+//     },
+//     score: 167,
+//     difficulty: 'HARD',
+//   },
+//   {
+//     user: {
+//       pseudo: "player 3",
+//     },
+//     score: 90,
+//     difficulty: 'HARD',
+//   },
+// ];
 
 const Home = () => {
   const [playerSelected, setPlayerSelected] = useState();
   const [difficultySelected, setDifficultySelected] = useState();
-  // const [scores, setScores] = useState();
+  const [scores, setScores] = useState();
 
-  // const fetchData = async () => {
-  //   const response = await fetch('http://localhost:3001/api/v1/results/');
-  //   console.log(response);
-  //   setScores(response.json());
-  // }
+  const fetchData = async () => {
+    const response = await fetch('http://localhost:3001/api/v1/results/').then(res => res.json());
+    console.log(response.data);
+    setScores(response.data);
+  }
 
-  // useEffect(() => {
-  //   fetchData();
-  // }, [scores])
+  useEffect(() => {
+    fetchData();
+  }, [])
 
-  // console.log(scores);
+  console.log(scores);
 
   return (
     <>
