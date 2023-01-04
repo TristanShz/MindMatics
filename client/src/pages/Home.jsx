@@ -7,7 +7,6 @@ import Button from "../components/ui/Button";
 import { Link } from "react-router-dom";
 import { ROUTES } from "../_config/routes";
 import TitleBlock from "../components/ui/TitleBlock";
-import { gameConfig } from "../_config/gameConfig";
 import { useEffect } from "react";
 import { useSession } from "../context/SessionContext";
 

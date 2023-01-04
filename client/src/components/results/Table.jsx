@@ -3,56 +3,38 @@ import { useEffect, useState } from "react";
 function difficultyLevel(level) {
     let levelTraduction = level === 1 ? 'EASY' : level === 2 ? 'NORMAL' : 'HARD';
     return levelTraduction
-  }
+}
 
 const Table = (props) => {
-  props.scores
-    .sort((firstObject, secondObject) =>
-      firstObject.score < secondObject.score ? 1 : -1
-    )
-    .map((score, index) => (score.id = index + 1));
 
     if (props.scores !== undefined) props.scores.sort((firstObject, secondObject) => (firstObject.score < secondObject.score ? 1 : -1)).map((score, index) => score.id = index + 1);
-  const [results, setResults] = useState();
+    const [results, setResults] = useState();
 
-
-  useEffect(() => {
-    if (props.playerSelected && props.difficultySelected) {
-      setResults(
-        props.scores.filter(
-          (score) =>
-            score.user.pseudo === props.playerSelected &&
-            score.difficulty === props.difficultySelected
-        )
-      );
-    } else if (props.playerSelected) {
-      setResults(
-        props.scores.filter(
-          (score) => score.user.pseudo === props.playerSelected
-        )
-      );
-    } else if (props.difficultySelected) {
-      setResults(
-        props.scores.filter(
-          (score) => score.difficulty === props.difficultySelected
-        )
-      );
-    } else setResults(props.scores);
-  }, [props.playerSelected, props.difficultySelected, props.scores]);
+    console.log('difficulty selected ',props.difficultySelected);
 
     useEffect(() => {
         if (props.playerSelected && props.difficultySelected) {
-            setResults(props.scores.filter(score => (score.user.pseudo === props.playerSelected && score.difficulty === props.difficultySelected)));
-        }
-        else if (props.playerSelected) {
-            setResults(props.scores.filter(score => score.user.pseudo === props.playerSelected))
-        }
-        else if (props.difficultySelected) {
-            setResults(props.scores.filter((score) => difficultyLevel(score.difficulty) === props.difficultySelected))
-        }
-        else setResults(props.scores)
-
-    }, [props.playerSelected, props.difficultySelected, props.scores])
+            setResults(
+                props.scores.filter(
+                    (score) =>
+                        score.user.pseudo === props.playerSelected &&
+                        score.difficulty === props.difficultySelected
+                )
+            );
+        } else if (props.playerSelected) {
+            setResults(
+                props.scores.filter(
+                    (score) => score.user.pseudo === props.playerSelected
+                )
+            );
+        } else if (props.difficultySelected) {
+            setResults(
+                props.scores.filter(
+                    (score) => score.difficulty === props.difficultySelected
+                )
+            );
+        } else setResults(props.scores);
+    }, [props.playerSelected, props.difficultySelected, props.scores]);
 
     return (<>
         <div className="flex flex-col">
@@ -81,7 +63,7 @@ const Table = (props) => {
                                     <tr className="bg-gray-100 border-b" key={r.id} data-testid="gridRow">
                                         <td className="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900 text-left">{r.id}</td>
                                         <td className="text-sm text-gray-900 font-light px-6 py-4 whitespace-nowrap text-left" data-testid={r.user.pseudo}>
-                                            {r.user.pseudo}
+                                            {r.user.username}
                                         </td>
                                         <td className="text-sm text-gray-900 font-light px-6 py-4 whitespace-nowrap text-left">
                                             {r.score}
@@ -96,11 +78,9 @@ const Table = (props) => {
                     </div>
                 </div>
             </div>
-          </div>
         </div>
-      </div>
     </>
-  );
+    );
 };
 
 export default Table;
