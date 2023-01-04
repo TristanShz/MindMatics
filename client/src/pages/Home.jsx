@@ -7,38 +7,32 @@ import Button from "../components/ui/Button";
 import { Link } from "react-router-dom";
 import { ROUTES } from "../_config/routes";
 import TitleBlock from "../components/ui/TitleBlock";
+import { gameConfig } from "../_config/gameConfig";
+import { useEffect } from "react";
+import { useSession } from "../context/SessionContext";
 
-const user = {
-  pseudo: "player 1",
-};
 
-const scores = [
-  {
-    user: {
-      pseudo: "player 1",
-    },
-    score: 24,
-    difficulty: 2,
-  },
-  {
-    user: {
-      pseudo: "player 2",
-    },
-    score: 45,
-    difficulty: 1,
-  },
-  {
-    user: {
-      pseudo: "player 1",
-    },
-    score: 5,
-    difficulty: 3,
-  },
-];
 
 const Home = () => {
   const [playerSelected, setPlayerSelected] = useState();
   const [difficultySelected, setDifficultySelected] = useState();
+  const [scores, setScores] = useState();
+
+  const fetchData = async () => {
+    const response = await fetch('http://localhost:3001/api/v1/results/').then(res => res.json());
+    console.log(response.data);
+    setScores(response.data);
+  }
+
+  useEffect(() => {
+    fetchData();
+  }, [])
+
+  const { session } = useSession();
+  const user = session.username;
+  console.log(user);
+
+  console.log(scores);
 
   return (
     <>
@@ -64,7 +58,7 @@ const Home = () => {
         <div className="flex justify-between gap-2">
           <SelectPlayer
             setPlayerSelected={setPlayerSelected}
-            user={user.pseudo}
+            user={user.username}
             playerSelected={playerSelected}
           />
           <DifficultyFilter

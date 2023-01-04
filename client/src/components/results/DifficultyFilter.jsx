@@ -1,6 +1,7 @@
 import { gameConfig } from "../../_config/gameConfig";
 import SelectableButton from "../ui/SelectableButton";
 
+
 const DifficultyFilter = ({ setDifficultySelected, difficultySelected }) => {
   return (
     <div className={"flex flex-wrap gap-2"}>
