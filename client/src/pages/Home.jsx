@@ -9,69 +9,8 @@ import { ROUTES } from "../_config/routes";
 import TitleBlock from "../components/ui/TitleBlock";
 import { gameConfig } from "../_config/gameConfig";
 import { useEffect } from "react";
+import { useSession } from "../context/SessionContext";
 
-const user = {
-  pseudo: "player 1",
-};
-
-// const scores = [
-//   {
-//     user: {
-//       pseudo: "player 1",
-//     },
-//     score: 24,
-//     difficulty: 'NORMAL',
-//   },
-//   {
-//     user: {
-//       pseudo: "player 2",
-//     },
-//     score: 45,
-//     difficulty: 'HARD',
-//   },
-//   {
-//     user: {
-//       pseudo: "player 1",
-//     },
-//     score: 5,
-//     difficulty: 'EASY',
-//   },
-//   {
-//     user: {
-//       pseudo: "player 1",
-//     },
-//     score: 67,
-//     difficulty: 'NORMAL',
-//   },
-//   {
-//     user: {
-//       pseudo: "player 1",
-//     },
-//     score: 78,
-//     difficulty: 'NORMAL',
-//   },
-//   {
-//     user: {
-//       pseudo: "player 2",
-//     },
-//     score: 2,
-//     difficulty: 'HARD',
-//   },
-//   {
-//     user: {
-//       pseudo: "player 1",
-//     },
-//     score: 167,
-//     difficulty: 'HARD',
-//   },
-//   {
-//     user: {
-//       pseudo: "player 3",
-//     },
-//     score: 90,
-//     difficulty: 'HARD',
-//   },
-// ];
 
 const Home = () => {
   const [playerSelected, setPlayerSelected] = useState();
@@ -87,6 +26,10 @@ const Home = () => {
   useEffect(() => {
     fetchData();
   }, [])
+
+  const { session } = useSession();
+  const user = session.username;
+  console.log(user);
 
   console.log(scores);
 
@@ -114,7 +57,7 @@ const Home = () => {
         <div className="flex justify-around">
           <SelectPlayer
             setPlayerSelected={setPlayerSelected}
-            user={user.pseudo}
+            user={user.username}
             playerSelected={playerSelected}
           />
           <DifficultyFilter

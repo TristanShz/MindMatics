@@ -1,5 +1,10 @@
 import { useEffect, useState } from "react";
 
+function difficultyLevel(level) {
+    let levelTraduction = level === 1 ? 'EASY' : level === 2 ? 'NORMAL' : 'HARD';
+    return levelTraduction
+  }
+
 const Table = (props) => {
 
     if (props.scores !== undefined) props.scores.sort((firstObject, secondObject) => (firstObject.score < secondObject.score ? 1 : -1)).map((score, index) => score.id = index + 1);
@@ -14,7 +19,7 @@ const Table = (props) => {
             setResults(props.scores.filter(score => score.user.pseudo === props.playerSelected))
         }
         else if (props.difficultySelected) {
-            setResults(props.scores.filter((score) => score.difficulty === props.difficultySelected))
+            setResults(props.scores.filter((score) => difficultyLevel(score.difficulty) === props.difficultySelected))
         }
         else setResults(props.scores)
 
@@ -53,7 +58,7 @@ const Table = (props) => {
                                             {r.score}
                                         </td>
                                         <td className="text-sm text-gray-900 font-light px-6 py-4 whitespace-nowrap text-left" data-testid={r.difficulty === 'EASY' ? 'easyCell' : r.difficulty === 'NORMAL' ? 'normalCell' : 'hardCell'} >
-                                            {r.difficulty}
+                                            {difficultyLevel(r.difficulty)}
                                         </td>
                                     </tr>
                                 )}
