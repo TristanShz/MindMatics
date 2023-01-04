@@ -2,6 +2,7 @@ import { useGame } from "../../context/GameContext";
 import TitleBlock from "../ui/TitleBlock";
 import { gameConfig } from "../../_config/gameConfig";
 import SecondaryText from "../ui/SecondaryText";
+import Button from "../ui/Button";
 
 const StartGame = () => {
   const { difficulty } = useGame();
@@ -16,6 +17,7 @@ const StartGame = () => {
         <SecondaryText>{gameConfig.timeRemovedWhenBadResponse}</SecondaryText>{" "}
         seconds will be removed on the timer, good luck!
       </p>
+      <Button large>START GAME</Button>
     </div>
   );
 };
