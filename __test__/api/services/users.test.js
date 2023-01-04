@@ -1,10 +1,20 @@
+const request = require("supertest");
+const app = require("../../../app");
+const apiConfig = require("../../../api/_config/apiConfig");
 
-const usernameTest = "usernameTest";
-const userPasswordTest = "userPsswdTest";
-const createdUser = undefined;
+describe("Test users routes", () => {
 
-describe("Test results routes", () => {
-  
+  test("It should response the GET method getUserByUsername", () => {
+    return request(app)
+      .get(apiConfig.apiPath + "/users/getUserByUsername")
+      .send({
+        username: "gauthier",
+      })
+      .then((response) => {
+        expect(response.statusCode).toBe(200);
+      });
+  });
+
   test("It should response the GET method getAllUsers", () => {
     return request(app)
       .get(apiConfig.apiPath + "/users/getAllUsers")

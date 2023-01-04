@@ -8,7 +8,7 @@ router.post("/register", usersController.register);
 
 router.post("/login", usersController.login);
 
-router.post("/getAllUsers", usersController.retrieveAll);
+router.get("/getAllUsers", usersController.retrieveAll);
 
 router.get("/getUserByUsername", usersController.retrieveByUsername);
 
