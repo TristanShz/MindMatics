@@ -7,7 +7,6 @@ import Button from "../components/ui/Button";
 import { Link } from "react-router-dom";
 import { ROUTES } from "../_config/routes";
 import TitleBlock from "../components/ui/TitleBlock";
-import { gameConfig } from "../_config/gameConfig";
 
 const user = {
   pseudo: "player 1",
@@ -43,7 +42,7 @@ const Home = () => {
 
   return (
     <>
-      <div className={"w-full h-[calc(100vh-300px)]"}>
+      <div className={"w-full mb-16 sm:mb-20 md:md-32 lg:mb-48 xl:mb-64"}>
         <div
           className={
             "text-end text-red-500 hover:underline hover:cursor-pointer text-lg"
@@ -62,15 +61,15 @@ const Home = () => {
       </div>
       <div className={"flex flex-col gap-8"}>
         <h2>Classement</h2>
-        <div className="flex justify-around">
+        <div className="flex justify-between gap-2">
           <SelectPlayer
             setPlayerSelected={setPlayerSelected}
             user={user.pseudo}
             playerSelected={playerSelected}
           />
           <DifficultyFilter
-            difficulties={gameConfig.difficulties}
             setDifficultySelected={setDifficultySelected}
+            difficultySelected={difficultySelected}
           />
         </div>
         <Table
