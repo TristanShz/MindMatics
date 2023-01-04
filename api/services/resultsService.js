@@ -5,6 +5,7 @@ exports.getAll = () => {
 }
 
 exports.create = (result) => {
+    console.log(result)
     const createdResult = new Result(result);
     return createdResult.save().then(res => res);
 }

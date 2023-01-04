@@ -2,6 +2,11 @@ const User = require("../models/User");
 const bcrypt = require("bcrypt");
 const jwt = require("jsonwebtoken");
 const apiConfig = require("../_config/apiConfig");
+const { ObjectId } = require('mongodb');
+
+exports.get = (id) => {
+  return User.findById(id).exec();
+}
 
 exports.register = (user) => {
   const createdUser = new User(user);
@@ -25,7 +30,7 @@ exports.comparePasswords = (plainTextPassword, hash) => {
 };
 
 exports.getSession = (token) => {
-  return User.findOne({ _id: jwt.decode(token).id });
+  return User.findOne({ _id: ObjectId(jwt.decode(token).id) });
 };
 
 exports.signToken = (user) => {
