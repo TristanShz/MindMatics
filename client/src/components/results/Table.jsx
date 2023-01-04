@@ -10,21 +10,19 @@ const Table = (props) => {
     if (props.scores !== undefined) props.scores.sort((firstObject, secondObject) => (firstObject.score < secondObject.score ? 1 : -1)).map((score, index) => score.id = index + 1);
     const [results, setResults] = useState();
 
-    console.log('difficulty selected ',props.difficultySelected);
-
     useEffect(() => {
         if (props.playerSelected && props.difficultySelected) {
             setResults(
                 props.scores.filter(
                     (score) =>
-                        score.user.pseudo === props.playerSelected &&
+                        score.user.username === props.playerSelected &&
                         score.difficulty === props.difficultySelected
                 )
             );
         } else if (props.playerSelected) {
             setResults(
                 props.scores.filter(
-                    (score) => score.user.pseudo === props.playerSelected
+                    (score) => score.user.username === props.playerSelected
                 )
             );
         } else if (props.difficultySelected) {

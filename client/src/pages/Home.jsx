@@ -29,9 +29,6 @@ const Home = () => {
 
   const { session } = useSession();
   const user = session.username;
-  console.log(user);
-
-  console.log(scores);
 
   return (
     <>
@@ -57,7 +54,7 @@ const Home = () => {
         <div className="flex justify-between gap-2">
           <SelectPlayer
             setPlayerSelected={setPlayerSelected}
-            user={user.username}
+            user={user}
             playerSelected={playerSelected}
           />
           <DifficultyFilter
