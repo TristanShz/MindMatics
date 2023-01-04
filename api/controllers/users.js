@@ -1,6 +1,3 @@
-const jwt = require("jsonwebtoken");
-const apiConfig = require("../_config/apiConfig");
-const userModel = require("../models/User");
 const usersService = require("../services/usersService");
 
 /**
