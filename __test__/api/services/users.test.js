@@ -1,6 +1,16 @@
-const usersController = require("../../src/controllers/users");
+const usersService = require("../../src/services/usersService");
 
-test("register new user should return data : user", () => {
+const usernameTest = "usernameTest";
+const userPasswordTest = "userPsswdTest";
+const userId = "";
+
+test("register new user should return data : user", async () => {
+    const password = await usersService.hashPassword(userPasswordTest);
+    const user = {
+      username: usernameTest,
+      password,
+    };
+    const createdUser = usersService.register(user);
   expect(sum(1, 2)).toBe(3);
 });
 

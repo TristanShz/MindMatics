@@ -1,4 +1,4 @@
-const resultsController = require("../../src/controllers/results");
+const resultsServices = require("../../src/services/");
 
 test("create new result should return data : result", () => {
   expect(sum(1, 2)).toBe(3);
