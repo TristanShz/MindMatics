@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 
 const Table = (props) => {
 
-    props.scores.sort((a, b) => (a.score < b.score ? 1 : -1)).map((s, index) => s.id = index + 1);
+    props.scores.sort((firstObject, secondObject) => (firstObject.score < secondObject.score ? 1 : -1)).map((score, index) => score.id = index + 1);
 
     const [results, setResults] = useState();
 
