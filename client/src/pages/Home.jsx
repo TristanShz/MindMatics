@@ -16,6 +16,7 @@ const Home = () => {
   const [playerSelected, setPlayerSelected] = useState();
   const [difficultySelected, setDifficultySelected] = useState();
   const [scores, setScores] = useState();
+  const [user, setUser] = useState();
 
   const fetchData = async () => {
     const response = await fetch('http://localhost:3001/api/v1/results/').then(res => res.json());
@@ -28,7 +29,10 @@ const Home = () => {
   }, [])
 
   const { session } = useSession();
-  const user = session.username;
+
+  useEffect(()=> {
+    setUser(session.username);
+  },[session])
 
   return (
     <>
