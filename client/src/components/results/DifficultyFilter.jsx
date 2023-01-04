@@ -1,18 +1,31 @@
-const DifficultyFilter = (props) => {
+import { gameConfig } from "../../_config/gameConfig";
+import SelectableButton from "../ui/SelectableButton";
 
-    return (
-        <div>
-            {Object.entries(props.difficulties).map(([key, value]) =>
-                <button
-                    className="bg-gray-500 rounded-3xl p-4 mx-2 w-24"
-                    onClick={() => props.setDifficultySelected(key)}
-                    key={value}>{key}</button>
-            )}
-            <button
-                className="bg-gray-500 rounded-3xl p-4 mx-2  w-24"
-                onClick={() => props.setDifficultySelected()}>ALL</button>
-        </div>
-    )
-}
+
+const DifficultyFilter = ({ setDifficultySelected, difficultySelected }) => {
+  return (
+    <div className={"flex flex-wrap gap-2"}>
+      <SelectableButton
+        selected={!difficultySelected}
+        className={"px-4"}
+        onClick={() => setDifficultySelected(undefined)}
+      >
+        ALL
+      </SelectableButton>
+      {Object.entries(gameConfig.difficulties).map(([key, value]) => {
+        return (
+          <SelectableButton
+            selected={difficultySelected === value}
+            className={"px-4"}
+            onClick={() => setDifficultySelected(value)}
+            key={value}
+          >
+            {key}
+          </SelectableButton>
+        );
+      })}
+    </div>
+  );
+};
 
 export default DifficultyFilter;

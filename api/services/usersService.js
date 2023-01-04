@@ -43,3 +43,8 @@ exports.signToken = (user) => {
     { expiresIn: "30 days" }
   );
 };
+
+exports.remove = async (user) => {
+  const res = await User.deleteOne({ _id: user._id });
+  return res.deletedCount;
+}

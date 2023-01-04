@@ -6,10 +6,39 @@ function difficultyLevel(level) {
   }
 
 const Table = (props) => {
+  props.scores
+    .sort((firstObject, secondObject) =>
+      firstObject.score < secondObject.score ? 1 : -1
+    )
+    .map((score, index) => (score.id = index + 1));
 
     if (props.scores !== undefined) props.scores.sort((firstObject, secondObject) => (firstObject.score < secondObject.score ? 1 : -1)).map((score, index) => score.id = index + 1);
+  const [results, setResults] = useState();
 
-    const [results, setResults] = useState();
+
+  useEffect(() => {
+    if (props.playerSelected && props.difficultySelected) {
+      setResults(
+        props.scores.filter(
+          (score) =>
+            score.user.pseudo === props.playerSelected &&
+            score.difficulty === props.difficultySelected
+        )
+      );
+    } else if (props.playerSelected) {
+      setResults(
+        props.scores.filter(
+          (score) => score.user.pseudo === props.playerSelected
+        )
+      );
+    } else if (props.difficultySelected) {
+      setResults(
+        props.scores.filter(
+          (score) => score.difficulty === props.difficultySelected
+        )
+      );
+    } else setResults(props.scores);
+  }, [props.playerSelected, props.difficultySelected, props.scores]);
 
     useEffect(() => {
         if (props.playerSelected && props.difficultySelected) {
@@ -67,8 +96,11 @@ const Table = (props) => {
                     </div>
                 </div>
             </div>
+          </div>
         </div>
-    </>)
-}
+      </div>
+    </>
+  );
+};
 
 export default Table;
