@@ -5,7 +5,11 @@ exports.getAll = () => {
 }
 
 exports.create = (result) => {
-    console.log(result)
     const createdResult = new Result(result);
     return createdResult.save().then(res => res);
 }
+
+exports.remove = async (result) => {
+    const res = await Result.deleteOne({ _id: result._id });
+    return res.deletedCount;
+  }

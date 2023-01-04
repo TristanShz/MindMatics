@@ -34,6 +34,22 @@ exports.register = async (req, res) => {
 };
 
 /**
+ * remove user using his id
+ * @param {*} req 
+ * @param {*} res 
+ */
+exports.remove = async (req, res) => {
+  if (!utilsService.checkObjectId(req.body.userId)){
+    res.status(400).json({error: 'ObjectId is not valid'});
+  }
+  const userToDelete = await usersService.get(req.body.userId);
+  if(!userToDelete){
+      res.status(404).json({error: 'No user matching id'});
+  }
+  usersService.remove(userToDelete);
+}
+
+/**
  * Login if data are filled and if user exist
  * @param {*} req
  * @param {*} res
