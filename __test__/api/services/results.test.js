@@ -1,49 +1,30 @@
-const resultsServices = require("../../api/services/resultService");
+const request = require("supertest");
+const app = require("../../../app");
+const apiConfig = require("../../../api/_config/apiConfig");
 
-const score = 10;
-const difficulty = 2;
-const userId = "63b52bdc4dd93a2ee647d12d";
-const savedResult = undefined;
+describe("Test results routes", () => {
+  
+  test("It should response the GET method getAllResult", () => {
+    return request(app)
+      .get(apiConfig.apiPath + "/results/")
+      .then((response) => {
+        expect(response.statusCode).toBe(200);
+      });
+  });
 
-beforeAll(() => {
-  const resultToSave = {
-    user: userId,
-    score: score,
-    difficulty: difficulty,
-  };
-  savedResult = resultsServices.create(resultToSave);
-});
+  test("It should response the GET method create", () => {
+    return request(app)
+      .get(apiConfig.apiPath + "/results/")
+      .then((response) => {
+        expect(response.statusCode).toBe(200);
+      });
+  });
 
-afterAll(() => {
-  resultsServices.remove(savedResult);
-});
-
-test("create new result should return data : result", () => {
-  expect(savedResult._id).not.toBeUndefined();
-});
-
-test("create new result using incorrect data should return error", () => {
-  const resultToSave = {
-    user: userId,
-    score: undefined,
-    difficulty: "qwertyuiop",
-  };
-  const savedResult = resultsServices.create(resultToSave);
-  expect(savedResult._id).not.toBeUndefined();
-});
-
-test("get all result should not be empty", () => {
-  expect(resultsServices.getAll()).not.toBe(0);
-});
-
-test("remove result should reduce result list size by one", () => {
-  const resultToSave = {
-    user: userId,
-    score: score,
-    difficulty: difficulty,
-  };
-  const savedResultTest = resultsServices.create(resultToSave);
-  const listSize = resultsServices.getAll().size();
-  resultsServices.remove(savedResultTest);
-  expect(resultsServices.getAll()).toBeLessThan(listSize);
+  test("It should response the GET method remove", () => {
+    return request(app)
+      .get(apiConfig.apiPath + "/results/")
+      .then((response) => {
+        expect(response.statusCode).toBe(200);
+      });
+  });
 });

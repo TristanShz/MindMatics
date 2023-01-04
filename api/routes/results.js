@@ -6,5 +6,6 @@ router.get("/", resultController.getAll);
 
 router.post("/create", resultController.create);
 
+router.post("/remove", resultController.remove);
 
 module.exports = router;
