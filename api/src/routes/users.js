@@ -10,6 +10,6 @@ router.post("/login", usersController.login);
 
 router.post("/getAllUsers", usersController.retrieveAll);
 
-router.get("/getUserByPseudo", usersController.retrieveByUsername);
+router.get("/getUserByUsername", usersController.retrieveByUsername);
 
 module.exports = router;
