@@ -6,7 +6,7 @@ import { authUtils } from "../utils/authUtils";
 import { toast } from "react-toastify";
 import ErrorMessage from "../components/ui/ErrorMessage";
 import { useNavigate } from "react-router-dom";
-import { useSession } from "../context/session";
+import { useSession } from "../context/SessionContext";
 
 const Auth = () => {
   const [authMethod, setAuthMethod] = useState("login");
@@ -32,7 +32,7 @@ const Auth = () => {
     if (
       username.length < 3 ||
       username.length > 20 ||
-      password.length < 6 ||
+      password.length < 8 ||
       password.length > 20
     ) {
       if (username.length < 3) {

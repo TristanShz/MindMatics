@@ -2,9 +2,12 @@ import { useState } from "react";
 import DifficultyFilter from "../components/results/DifficultyFilter";
 import Table from "../components/results/Table";
 import SelectPlayer from "../components/results/SelectPlayer";
-import { DIFFICULTY } from "../_config/appConfig";
 import { authUtils } from "../utils/authUtils";
 import Button from "../components/ui/Button";
+import { Link } from "react-router-dom";
+import { ROUTES } from "../_config/routes";
+import TitleBlock from "../components/ui/TitleBlock";
+import { gameConfig } from "../_config/gameConfig";
 
 const user = {
   pseudo: "player 1",
@@ -43,23 +46,18 @@ const Home = () => {
       <div className={"w-full h-[calc(100vh-300px)]"}>
         <div
           className={
-            "text-end text-red-500 hover:underline hover:cursor-pointer"
+            "text-end text-red-500 hover:underline hover:cursor-pointer text-lg"
           }
           onClick={authUtils.logout}
         >
           Log out
         </div>
-        <div className={"space-y-12"}>
-          <h1>Mindmatics</h1>
-          <h2
-            className={
-              "text-transparent bg-clip-text bg-gradient-to-l from-violet-500 to-teal-500"
-            }
-          >
-            Mental math <br /> challenge
-          </h2>
+        <div className={"flex flex-col gap-12"}>
+          <TitleBlock />
           <h3>Want to be mentaly challenged ?</h3>
-          <Button large>Start game</Button>
+          <Link to={ROUTES.game}>
+            <Button large>Start game</Button>
+          </Link>
         </div>
       </div>
       <div className={"flex flex-col gap-8"}>
@@ -71,7 +69,7 @@ const Home = () => {
             playerSelected={playerSelected}
           />
           <DifficultyFilter
-            difficulties={DIFFICULTY}
+            difficulties={gameConfig.difficulties}
             setDifficultySelected={setDifficultySelected}
           />
         </div>

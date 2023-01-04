@@ -3,7 +3,7 @@ import {
   getSessionCookie,
   removeSessionCookie,
   setSessionCookie,
-} from "../context/session";
+} from "../context/SessionContext";
 
 class AuthUtils {
   token = undefined;
@@ -25,7 +25,6 @@ class AuthUtils {
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({ username, password }),
     });
-    console.log(response);
     if (response.status !== 200) throw new Error("Login failed");
     const { data, error } = await response.json();
     if (error) throw new Error(error);
@@ -53,14 +52,6 @@ class AuthUtils {
   async logout() {
     removeSessionCookie();
     window.location.reload();
-  }
-
-  async getLoggedInUser() {
-    console.log(appConfig.apiPath);
-    return fetch(`${appConfig.apiPath}/users/getLoggedInUser`, {
-      method: "GET",
-      headers: this.headers,
-    }).then((res) => res.json());
   }
 }
 

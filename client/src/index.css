@@ -19,15 +19,15 @@ html, body, #root {
   }
 
   h1 {
-    @apply text-8xl font-bold text-slate-50;
+    @apply text-5xl sm:text-6xl md:text-7xl lg:text-8xl font-bold text-slate-50;
   }
 
   h2 {
-    @apply text-6xl font-bold text-slate-50;
+    @apply text-4xl md:text-5xl lg:text-6xl font-bold text-slate-50;
   }
 
   h3 {
-    @apply text-4xl font-medium text-slate-50;
+    @apply text-2xl md:text-3xl lg:text-4xl font-medium text-slate-50;
   }
 
   h4 {
