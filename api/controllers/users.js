@@ -8,7 +8,6 @@ const usersService = require("../services/usersService");
 exports.register = async (req, res) => {
   try {
     if (checkUsernameAndPassword(req)) {
-      console.log("tetet")
       return res.status(400).json({ error: "Password or username is empty" });
     }
     const password = await usersService.hashPassword(req.body.password);
@@ -64,7 +63,6 @@ exports.remove = async (req, res) => {
  */
 exports.login = async (req, res) => {
   if (checkUsernameAndPassword(req)) {
-    console.log("dwqdda")
     return res.status(400).json({ error: "Password or username is empty" });
   }
   const existingUser = await usersService.getUserByUsername(req.body.username);

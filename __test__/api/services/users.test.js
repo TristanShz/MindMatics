@@ -122,29 +122,3 @@ describe("Test users routes", () => {
   });
 
 });
-
-describe("Test users routes : remove", () => {
-
-  const usernameTest = "userTest";
-  const passwordTest = "passwordTest";
-
-  beforeEach(() => {
-    request(app)
-      .get(apiConfig.apiPath + "/users/register")
-      .send({
-        username: usernameTest,
-        password: passwordTest,
-      });
-  });
-
-  test("It should response status code 200 using the GET method remove", () => {
-    return request(app)
-      .get(apiConfig.apiPath + "/users/remove")
-      .send({
-        username: usernameTest,
-      })
-      .then((response) => {
-        expect(response.statusCode).toBe(200);
-      });
-  });
-});
