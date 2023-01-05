@@ -10,8 +10,11 @@ const StartGame = () => {
   const { difficulty, setGameState } = useGameContext();
   const [isStarting, setIsStarting] = useState(false);
 
-  const startCounter = useCallback(() => setIsStarting(true), []);
-  const startGame = useCallback(() => setGameState(gameConfig.states.PLAY), []);
+  const startCounter = useCallback(() => setIsStarting(true), [setIsStarting]);
+  const startGame = useCallback(
+    () => setGameState(gameConfig.states.PLAY),
+    [setGameState]
+  );
 
   if (isStarting) {
     return <Counter onFinish={startGame} />;

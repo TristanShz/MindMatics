@@ -7,7 +7,8 @@ export const useGame = (difficulty) => {
 
   const calculation = useMemo(() => {
     return gameUtils.generateRandomCalculation(difficulty);
-  }, [userAnswers]);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [userAnswers, difficulty]);
 
   return {
     calculation,
