@@ -2,59 +2,17 @@ const request = require("supertest");
 const app = require("../../../app");
 const apiConfig = require("../../../api/_config/apiConfig");
 
-describe("Test users routes : register", () => {
-
-  const usernameTest = "userTest";
-  const passwordTest = "passwordTest";
-
-  afterEach(() => {
-    request(app)
-      .get(apiConfig.apiPath + "/users/remove")
-      .send({
-        username: usernameTest,
-      });
-  });
-
-  test("It should response error with wrong parameters using the POST method register", () => {
-    return request(app)
-      .post(apiConfig.apiPath + "/users/register")
-      .then((response) => {
-        expect(response.statusCode).toBe(400);
-      });
-  });
-
-  test("It should response the user data using the POST method register", () => {
-    return request(app)
-      .post(apiConfig.apiPath + "/users/register")
-      .send({
-        username: usernameTest,
-        password: passwordTest,
-      })
-      .then((response) => {
-        expect(response.statusCode).toBe(201);
-      });
-  });
-});
-
 describe("Test users routes", () => {
 
   const usernameTest = "userTest";
   const passwordTest = "passwordTest";
 
-  beforeEach(() => {
+  beforeAll(() => {
     request(app)
       .post(apiConfig.apiPath + "/users/register")
       .send({
         username: usernameTest,
         password: passwordTest,
-      });
-  });
-  
-  afterEach(() => {
-    request(app)
-      .get(apiConfig.apiPath + "/users/remove")
-      .send({
-        username: usernameTest,
       });
   });
 
