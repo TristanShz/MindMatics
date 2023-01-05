@@ -10,64 +10,64 @@ import TitleBlock from "../components/ui/TitleBlock";
 import { useSession } from "../context/SessionContext";
 import { appConfig } from "../_config/appConfig";
 
-const dataForTests = [
-  {
-    user: {
-      pseudo: "player 1",
-    },
-    score: 24,
-    difficulty: 2,
-  },
-  {
-    user: {
-      pseudo: "player 2",
-    },
-    score: 45,
-    difficulty: 3,
-  },
-  {
-    user: {
-      pseudo: "player 1",
-    },
-    score: 5,
-    difficulty: 1,
-  },
-  {
-    user: {
-      pseudo: "player 1",
-    },
-    score: 67,
-    difficulty: 2,
-  },
-  {
-    user: {
-      pseudo: "player 1",
-    },
-    score: 78,
-    difficulty: 2,
-  },
-  {
-    user: {
-      pseudo: "player 2",
-    },
-    score: 2,
-    difficulty: 3,
-  },
-  {
-    user: {
-      pseudo: "player 1",
-    },
-    score: 167,
-    difficulty: 3,
-  },
-  {
-    user: {
-      pseudo: "player 3",
-    },
-    score: 90,
-    difficulty: 3,
-  },
-];
+// const dataForTests = [
+//   {
+//     user: {
+//       pseudo: "player 1",
+//     },
+//     score: 24,
+//     difficulty: 2,
+//   },
+//   {
+//     user: {
+//       pseudo: "player 2",
+//     },
+//     score: 45,
+//     difficulty: 3,
+//   },
+//   {
+//     user: {
+//       pseudo: "player 1",
+//     },
+//     score: 5,
+//     difficulty: 1,
+//   },
+//   {
+//     user: {
+//       pseudo: "player 1",
+//     },
+//     score: 67,
+//     difficulty: 2,
+//   },
+//   {
+//     user: {
+//       pseudo: "player 1",
+//     },
+//     score: 78,
+//     difficulty: 2,
+//   },
+//   {
+//     user: {
+//       pseudo: "player 2",
+//     },
+//     score: 2,
+//     difficulty: 3,
+//   },
+//   {
+//     user: {
+//       pseudo: "player 1",
+//     },
+//     score: 167,
+//     difficulty: 3,
+//   },
+//   {
+//     user: {
+//       pseudo: "player 3",
+//     },
+//     score: 90,
+//     difficulty: 3,
+//   },
+// ];
 
 const fetchResults = async () => {
   const response = await fetch(`${appConfig.apiPath}/results/`);
@@ -90,73 +90,8 @@ const Home = () => {
   const [scores, setScores] = useState();
 
   useEffect(() => {
-    if (process.env.NODE_ENV === "test") {
-      setScores(dataForTests);
-    } else {
       fetchResults().then((data) => setScores(data));
-    }
   }, []);
-
-  // console.log('player selected ',playerSelected)
-
-  // const scores = [
-  //   {
-  //     user: {
-  //       username: "user-test",
-  //     },
-  //     score: 24,
-  //     difficulty: 2,
-  //   },
-  //   {
-  //     user: {
-  //       username: "player 2",
-  //     },
-  //     score: 45,
-  //     difficulty: 3,
-  //   },
-  //   {
-  //     user: {
-  //       username: "user-test",
-  //     },
-  //     score: 5,
-  //     difficulty: 1,
-  //   },
-  //   {
-  //     user: {
-  //       username: "user-test",
-  //     },
-  //     score: 67,
-  //     difficulty: 2,
-  //   },
-  //   {
-  //     user: {
-  //       username: "user-test",
-  //     },
-  //     score: 78,
-  //     difficulty: 2,
-  //   },
-  //   {
-  //     user: {
-  //       username: "player 2",
-  //     },
-  //     score: 2,
-  //     difficulty: 3,
-  //   },
-  //   {
-  //     user: {
-  //       username: "user-test",
-  //     },
-  //     score: 167,
-  //     difficulty: 3,
-  //   },
-  //   {
-  //     user: {
-  //       username: "player 3",
-  //     },
-  //     score: 90,
-  //     difficulty: 3,
-  //   },
-  // ]
 
   if (!session) return null;
   return (

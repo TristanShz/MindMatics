@@ -5,7 +5,7 @@ export const handlers = [
         return res(
             ctx.status(200),
             ctx.json(
-                {data : [
+                 {data :[
                     {
                         user: {
                             username: "user-test",
@@ -66,5 +66,4 @@ export const handlers = [
             )
         )
     })
-
 ]
