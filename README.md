@@ -10,26 +10,36 @@ Après avoir cloné le projet, effectuer les commandes suivantes :
 npm install && npm client-install
 npm run dev
 ```
+## Lancer le projet en local
+
+Pour lancer les tests back end
+```bash
+npm test
+```
+Pour lancer les tests front 
+```bash
+npm run client-test
+```
 
 ## Technologies utilisées
 
 ### Backend
 
-Environnement : NodeJs + ExpressJs 
+Environnement : NodeJs + ExpressJs (https://expressjs.com/fr/)
 
-Bdd : MongoDb
+Bdd : MongoDb (https://www.mongodb.com/fr-fr)
 
-Orm : Mongoose
+Orm : Mongoose (https://mongoosejs.com/)
 
-Tests: Jest + Supertest
+Tests: Jest + Supertest (https://jestjs.io/fr/)
 
 ### Frontend
 
-Environnement : React
+Environnement : React (https://fr.reactjs.org/)
 
-Css : TailwindCss
+Css : TailwindCss (https://tailwindcss.com/)
 
-Tests : Jest + React testing library
+Tests : Jest + React testing library (https://jestjs.io/fr/)
 
 ## Fonctionnement de l’application
 
@@ -103,3 +113,32 @@ const checkTokenMiddleware = (req, res, next) => {
   });
 };
 ```
+
+### Résultats
+
+- Schéma de Result
+
+```jsx
+const resultSchema = new Schema({
+  user: {
+    type: mongoose.Schema.Types.ObjectId,
+    ref: "User",
+    required: true,
+  },
+  score: {
+    type: Number,
+    required: true,
+  },
+  difficulty: {
+    type: Number,
+    required: true,
+  },
+});
+```
+Liaison avec la collection User par l'id de l'User
+
+Récupération de tous les résultats avec l'API puis affichage et filtres en front
+
+## Architecture
+![schemaArchitectureMindMatics drawio](https://user-images.githubusercontent.com/56965488/210797501-c88a7abe-666a-4534-a75e-4f65cc253a2d.png)
+
