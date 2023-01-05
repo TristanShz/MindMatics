@@ -35,6 +35,11 @@ export const gameConfig = {
     PLAY: "PLAY",
     FINISH: "FINISH",
   },
+  answerState: {
+    CORRECT: "CORRECT",
+    WRONG: "WRONG",
+    SKIP: "SKIP",
+  },
   operations: {
     ADDITION: "ADDITION",
     SUBTRACTION: "SUBTRACTION",

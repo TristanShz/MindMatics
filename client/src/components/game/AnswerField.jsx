@@ -1,11 +1,11 @@
 import Input from "../form/Input";
 import Button from "../ui/Button";
 import { memo, useEffect, useRef } from "react";
-import { gameConfig } from "../../_config/gameConfig";
 import { useGameContext } from "../../context/GameContext";
+import { gameConfig } from "../../_config/gameConfig";
 
 const AnswerField = memo(
-  ({ calculation, setScore, setTimer, setUserAnswers }) => {
+  ({ calculation, setScore, setTimer, setUserAnswers, setAnswerState }) => {
     const { difficulty } = useGameContext();
 
     const inputRef = useRef(null);
@@ -16,6 +16,10 @@ const AnswerField = memo(
     const handleSubmit = (e) => {
       e.preventDefault();
       if (inputRef.current.value) {
+        setAnswerState(gameConfig.answerState.CORRECT);
+        setTimeout(() => {
+          setAnswerState(undefined);
+        }, 1000);
         const answer = parseInt(inputRef.current.value);
         if (answer === calculation.result) {
           setScore(
@@ -24,6 +28,10 @@ const AnswerField = memo(
               gameConfig.scorePerOperation[difficulty][calculation.operation]
           );
         } else {
+          setAnswerState(gameConfig.answerState.WRONG);
+          setTimeout(() => {
+            setAnswerState(undefined);
+          }, 1000);
           setTimer((prevState) => prevState - gameConfig.penalty.wrongAnswer);
         }
         setUserAnswers((prevState) => [
@@ -38,6 +46,11 @@ const AnswerField = memo(
     };
 
     const handleSkip = () => {
+      setAnswerState(gameConfig.answerState.SKIP);
+      setTimeout(() => {
+        setAnswerState(undefined);
+      }, 1000);
+
       setTimer((prevState) => prevState - gameConfig.penalty.skip);
       setUserAnswers((prevState) => [
         ...prevState,
@@ -56,7 +69,9 @@ const AnswerField = memo(
             ref={inputRef}
             className={"flex-1"}
             onKeyUp={(e) => {
-              if (e.key === "s") handleSkip();
+              if (e.key === "s") {
+                handleSkip();
+              }
             }}
           />
           <Button type={"submit"}>Validate</Button>
