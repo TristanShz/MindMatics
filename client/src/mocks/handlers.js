@@ -4,8 +4,7 @@ export const handlers = [
     rest.get('http://localhost:3001/api/v1/results/', (req, res, ctx) => {
         return res(
             ctx.status(200),
-            ctx.json({
-                data: [
+            ctx.json([
                     {
                         user: {
                             pseudo: "player 1",
@@ -63,7 +62,7 @@ export const handlers = [
                         difficulty: 'HARD',
                     },
                 ]
-            })
+            )
         )
     })
 
