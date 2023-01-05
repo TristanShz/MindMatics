@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useEffect, useState } from "react";
 import DifficultyFilter from "../components/results/DifficultyFilter";
 import Table from "../components/results/Table";
 import SelectPlayer from "../components/results/SelectPlayer";
@@ -8,31 +8,33 @@ import { Link } from "react-router-dom";
 import { ROUTES } from "../_config/routes";
 import TitleBlock from "../components/ui/TitleBlock";
 import { useSession } from "../context/SessionContext";
+import { appConfig } from "../_config/appConfig";
 
-
+const fetchResults = async () => {
+  const response = await fetch(`${appConfig.apiPath}/results/`);
+  const results = await response.json();
+  if (results.error) {
+    console.error(results.error);
+    throw new Error(results.error);
+  }
+  if (response.status !== 200) {
+    throw new Error("Error while fetching results");
+  }
+  return results.data;
+};
 
 const Home = () => {
+  const { session } = useSession();
+
   const [playerSelected, setPlayerSelected] = useState();
   const [difficultySelected, setDifficultySelected] = useState();
   const [scores, setScores] = useState();
-  const [user, setUser] = useState();
-
-  const fetchData = async () => {
-    const response = await fetch('http://localhost:3001/api/v1/results/').then(res => res.json());
-    console.log(response.data);
-    setScores(response.data);
-  }
 
   useEffect(() => {
-    fetchData();
-  }, [])
+    fetchResults().then((data) => setScores(data));
+  }, []);
 
-  const { session } = useSession();
-
-  useEffect(()=> {
-    setUser(session.username);
-  },[session])
-
+  if (!session) return null;
   return (
     <>
       <div className={"w-full mb-16 sm:mb-20 md:md-32 lg:mb-48 xl:mb-64"}>
@@ -57,7 +59,7 @@ const Home = () => {
         <div className="flex justify-between gap-2">
           <SelectPlayer
             setPlayerSelected={setPlayerSelected}
-            user={user}
+            user={session.username}
             playerSelected={playerSelected}
           />
           <DifficultyFilter

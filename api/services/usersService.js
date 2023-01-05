@@ -19,9 +19,9 @@ exports.getUserByUsername = (username) => {
     .exec();
 };
 
-exports.hashPassword = (password) => {
+exports.hashPassword = (plainTextPassword) => {
   const saltRounds = 10;
-  return bcrypt.hash(password, saltRounds);
+  return bcrypt.hash(plainTextPassword, saltRounds);
 };
 
 exports.getAllUser = () => {
@@ -49,4 +49,4 @@ exports.signToken = (user) => {
 exports.remove = async (user) => {
   const res = await User.deleteOne({ username: user.username });
   return res.deletedCount;
-}
+};
