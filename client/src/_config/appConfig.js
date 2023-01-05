@@ -1,3 +1,3 @@
 export const appConfig = {
-  apiPath: process.env.API_URL || "http://localhost:3001/api/v1",
+  apiPath: process.env.REACT_APP_API_URL,
 };

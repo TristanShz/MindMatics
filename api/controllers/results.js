@@ -18,7 +18,11 @@ exports.getAll = async (req, res) => {
  * @param {*} res
  */
 exports.create = async (req, res) => {
-  if (!req.body.username || !req.body.score || !req.body.difficulty) {
+  if (
+    !req.body.username ||
+    req.body.score === undefined ||
+    !req.body.difficulty
+  ) {
     res.status(400).json({ error: "At least one field is empty" });
     return;
   }
