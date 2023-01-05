@@ -45,6 +45,6 @@ exports.signToken = (user) => {
 };
 
 exports.remove = async (user) => {
-  const res = await User.deleteOne({ _id: user._id });
+  const res = await User.deleteOne({ username: user.username });
   return res.deletedCount;
 }

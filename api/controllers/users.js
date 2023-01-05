@@ -7,8 +7,9 @@ const usersService = require("../services/usersService");
  */
 exports.register = async (req, res) => {
   try {
-    if (!req.body.password || !req.body.username) {
-      res.status(400).json({ error: "Password or username is empty" });
+    if (checkUsernameAndPassword(req)) {
+      console.log("tetet")
+      return res.status(400).json({ error: "Password or username is empty" });
     }
     const password = await usersService.hashPassword(req.body.password);
     const user = {
@@ -17,11 +18,11 @@ exports.register = async (req, res) => {
     };
     const createdUser = await usersService.register(user);
     if (!createdUser) {
-      res.status(500).json({ error: "error while saving user profile" });
+      return res.status(500).json({ error: "error while saving user profile" });
     }
     const token = usersService.signToken(createdUser);
 
-    res.status(201).json({
+    return res.status(201).json({
       data: {
         id: createdUser._id,
         username: createdUser.username,
@@ -29,25 +30,32 @@ exports.register = async (req, res) => {
       },
     });
   } catch (err) {
-    res.status(500).json({ error: err.message });
+    return res.status(500).json({ error: err.message });
   }
 };
 
 /**
- * remove user using his id
- * @param {*} req 
- * @param {*} res 
+ * remove user using his username
+ * @param {*} req
+ * @param {*} res
  */
 exports.remove = async (req, res) => {
-  if (!utilsService.checkObjectId(req.body.userId)){
-    res.status(400).json({error: 'ObjectId is not valid'});
+  try {
+    if (!req.body.username) {
+      return res.status(400).json({ error: "Username not specified" });
+    }
+    const userToDelete = await usersService.getUserByUsername(
+      req.body.username
+    );
+    if (!userToDelete) {
+      return res.status(404).json({ error: "No user matching username" });
+    }
+    usersService.remove(userToDelete);
+    return res.status(200);
+  } catch (err) {
+    return res.status(500).json({ error: err.message });
   }
-  const userToDelete = await usersService.get(req.body.userId);
-  if(!userToDelete){
-      res.status(404).json({error: 'No user matching id'});
-  }
-  usersService.remove(userToDelete);
-}
+};
 
 /**
  * Login if data are filled and if user exist
@@ -55,7 +63,8 @@ exports.remove = async (req, res) => {
  * @param {*} res
  */
 exports.login = async (req, res) => {
-  if (!req.body.password || !req.body.username) {
+  if (checkUsernameAndPassword(req)) {
+    console.log("dwqdda")
     return res.status(400).json({ error: "Password or username is empty" });
   }
   const existingUser = await usersService.getUserByUsername(req.body.username);
@@ -67,11 +76,11 @@ exports.login = async (req, res) => {
     existingUser.password
   );
   if (!checkPassword) {
-    res.status(400).json({ error: "Wrong password" });
+    return res.status(400).json({ error: "Wrong password" });
   } else {
     const token = usersService.signToken(existingUser);
 
-    res.status(200).json({
+    return res.status(200).json({
       data: {
         id: existingUser._id,
         username: existingUser.username,
@@ -102,3 +111,15 @@ exports.retrieveByUsername = async (req, res) => {
   const existingUser = await usersService.getUserByUsername(req.body.username);
   return res.status(200).json({ data: existingUser });
 };
+
+/**
+ * check if params exist and if they are not empty in request body
+ * @param {*} req
+ * @returns
+ */
+function checkUsernameAndPassword(req) {
+  return (
+    !req.body.password ||
+    !req.body.username
+  );
+}

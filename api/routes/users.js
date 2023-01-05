@@ -12,4 +12,6 @@ router.get("/getAllUsers", usersController.retrieveAll);
 
 router.get("/getUserByUsername", usersController.retrieveByUsername);
 
+router.get("/remove", usersController.remove);
+
 module.exports = router;
