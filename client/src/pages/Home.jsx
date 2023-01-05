@@ -11,7 +11,7 @@ import { useSession } from "../context/SessionContext";
 import { appConfig } from "../_config/appConfig";
 
 const fetchResults = async () => {
-  const response = await fetch(`${appConfig.apiPath}/results/`);
+  const response = await fetch(`${appConfig.apiPath}/results/leaderboard`);
   const results = await response.json();
   if (results.error) {
     console.error(results.error);

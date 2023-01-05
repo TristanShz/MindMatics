@@ -7,8 +7,8 @@ const utilsService = require("../services/utilsService");
  * @param {*} req
  * @param {*} res
  */
-exports.getAll = async (req, res) => {
-  const results = await resultsService.getAll();
+exports.getLeaderboard = async (req, res) => {
+  const results = await resultsService.getLeaderboard();
   res.status(200).json({ data: results });
 };
 

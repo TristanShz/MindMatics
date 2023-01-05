@@ -1,7 +1,7 @@
 const SelectPlayer = (props) => {
   return (
     <button
-      className="bg-gray-500 border border-slate-50 rounded p-1 md:p-4"
+      className="bg-slate-500 hover:bg-slate-600 border border-slate-50 p-1 md:p-4"
       onClick={() => {
         props.playerSelected
           ? props.setPlayerSelected("")

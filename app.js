@@ -16,7 +16,7 @@ const app = express();
 app.use(bodyParser.json());
 app.use(express.urlencoded({ extended: true }));
 
-app.use(cors({ origin: "*" }));
+app.use(cors({ origin: process.env.APP_URL, credentials: true }));
 
 //Configuration des routes
 app.use(apiConfig.apiPath + "/results", router.results);
