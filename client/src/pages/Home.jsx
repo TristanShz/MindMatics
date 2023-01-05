@@ -31,16 +31,20 @@ const Home = () => {
   const [scores, setScores] = useState();
 
   useEffect(() => {
-      fetchResults().then((data) => setScores(data));
+    fetchResults().then((data) => setScores(data));
   }, []);
 
   if (!session) return null;
   return (
     <>
-      <div className={"w-full mb-16 sm:mb-20 md:md-32 lg:mb-48 xl:mb-64"}>
+      <div
+        className={
+          "w-full mb-16 sm:mb-20 md:md-32 lg:mb-48 xl:mb-64 flex flex-col"
+        }
+      >
         <div
           className={
-            "text-end text-red-500 hover:underline hover:cursor-pointer text-lg"
+            "w-fit self-end text-red-500 hover:underline hover:cursor-pointer text-lg"
           }
           onClick={authUtils.logout}
         >

@@ -63,7 +63,7 @@ const GameResult = memo(({ result, resetGame }) => {
           );
         })}
       </div>
-      <div>
+      <div className={"flex gap-8"}>
         <Button large onClick={saveScore}>
           Save score
         </Button>

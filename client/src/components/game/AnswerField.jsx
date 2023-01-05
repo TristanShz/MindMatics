@@ -51,7 +51,14 @@ const AnswerField = memo(
     return (
       <div>
         <form className={"flex gap-2 w-full"} onSubmit={handleSubmit}>
-          <Input type={"number"} ref={inputRef} className={"flex-1"} />
+          <Input
+            type={"number"}
+            ref={inputRef}
+            className={"flex-1"}
+            onKeyUp={(e) => {
+              if (e.key === "s") handleSkip();
+            }}
+          />
           <Button type={"submit"}>Validate</Button>
           <Button type={"button"} secondary onClick={handleSkip}>
             Skip

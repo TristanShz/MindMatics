@@ -5,19 +5,20 @@ import { useGameContext } from "../../context/GameContext";
 import AnswerField from "./AnswerField";
 import { memo } from "react";
 import { useGame } from "../../hooks/useGame";
+import SecondaryText from "../ui/SecondaryText";
 
 const Game = memo(({ setGameResult, setGameState }) => {
   const { difficulty } = useGameContext();
   const { timer, setTimer } = useTimer();
   const game = useGame(difficulty);
 
-  if (timer <= 0) {
-    setGameState(gameConfig.states.FINISH);
-    setGameResult({ userAnswers: game.userAnswers, score: game.score });
-  }
+  // if (timer <= 0) {
+  //   setGameState(gameConfig.states.FINISH);
+  //   setGameResult({ userAnswers: game.userAnswers, score: game.score });
+  // }
 
   return (
-    <div className={"w-full h-full flex items-center justify-center"}>
+    <div className={"w-full h-full flex flex-col items-center justify-center"}>
       <div
         className={
           "p-12 border border-slate-50 bg-slate-900 shadow shadow-slate-800 w-2/3 space-y-16"
@@ -39,6 +40,10 @@ const Game = memo(({ setGameResult, setGameState }) => {
           setTimer={setTimer}
           setUserAnswers={game.setUserAnswers}
         />
+      </div>
+      <div className={"mt-2 text-slate-400"}>
+        Press <SecondaryText>Enter</SecondaryText> to validate your answer and{" "}
+        <SecondaryText>S</SecondaryText> to skip
       </div>
     </div>
   );
