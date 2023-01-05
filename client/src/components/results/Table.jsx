@@ -6,6 +6,12 @@ function difficultyLevel(level) {
   if (level === 3) return "HARD";
 }
 
+const getCellDataTestId = (difficulty) => {
+  if (difficultyLevel(difficulty) === "EASY") return "easyCell";
+  if (difficultyLevel(difficulty) === "NORMAL") return "normalCell";
+  if (difficultyLevel(difficulty) === "HARD") return "hardCell";
+};
+
 const Table = (props) => {
   if (props.scores !== undefined)
     props.scores
@@ -96,13 +102,7 @@ const Table = (props) => {
                         </td>
                         <td
                           className="text-sm text-gray-900 font-light px-6 py-4 whitespace-nowrap text-left"
-                          data-testid={
-                            difficultyLevel(r.difficulty) === "EASY"
-                              ? "easyCell"
-                              : difficultyLevel(r.difficulty) === "NORMAL"
-                              ? "normalCell"
-                              : "hardCell"
-                          }
+                          data-testid={getCellDataTestId(r.difficulty)}
                         >
                           {difficultyLevel(r.difficulty)}
                         </td>

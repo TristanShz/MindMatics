@@ -2,11 +2,15 @@
 // allows you to do things like:
 // expect(element).toHaveTextContent(/react/i)
 // learn more: https://github.com/testing-library/jest-dom
-import '@testing-library/jest-dom';
-import { server } from './mocks/server.js'
+import "@testing-library/jest-dom";
+import { server } from "./mocks/server.js";
 
-beforeAll(() => server.listen())
+import * as matchers from "jest-extended";
 
-afterEach(() => server.resetHandlers())
+expect.extend(matchers);
 
-afterAll(() => server.close())
+beforeAll(() => server.listen());
+
+afterEach(() => server.resetHandlers());
+
+afterAll(() => server.close());

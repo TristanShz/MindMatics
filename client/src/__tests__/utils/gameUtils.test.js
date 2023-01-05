@@ -33,12 +33,12 @@ test("Generate random number should return a number between min and max", () => 
 
 test("Generate random operation should return a random operation", () => {
   const result = gameUtils.generateRandomOperation();
-  expect(result).toBe(
-    operations.ADDITION ||
-      operations.SUBTRACTION ||
-      operations.MULTIPLICATION ||
-      operations.DIVISION
-  );
+  expect(result).toBeOneOf([
+    operations.ADDITION,
+    operations.SUBTRACTION,
+    operations.MULTIPLICATION,
+    operations.DIVISION,
+  ]);
 });
 
 test("Get generation range should return the correct range", () => {

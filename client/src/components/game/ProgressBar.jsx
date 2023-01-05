@@ -5,8 +5,14 @@ const ProgressBar = memo(({ initialTime, timer }) => {
   const controls = useAnimationControls();
   const progress = (timer / initialTime) * 100;
   useEffect(() => {
-    const color =
-      progress > 30 ? "#14b8a6" : progress > 10 ? "#f56565" : "#ef4444";
+    let color;
+    if (progress > 30) {
+      color = "#14b8a6";
+    } else if (progress > 10) {
+      color = "#f56565";
+    } else {
+      color = "#ef4444";
+    }
     controls.start({
       width: `${progress}%`,
       background: color,
