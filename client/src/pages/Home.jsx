@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import DifficultyFilter from "../components/results/DifficultyFilter";
 import Table from "../components/results/Table";
 import SelectPlayer from "../components/results/SelectPlayer";
@@ -7,7 +7,6 @@ import Button from "../components/ui/Button";
 import { Link } from "react-router-dom";
 import { ROUTES } from "../_config/routes";
 import TitleBlock from "../components/ui/TitleBlock";
-import { useEffect } from "react";
 import { useSession } from "../context/SessionContext";
 
 

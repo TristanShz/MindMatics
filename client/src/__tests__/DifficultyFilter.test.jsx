@@ -2,69 +2,6 @@ import { fireEvent, screen, waitFor, within } from "@testing-library/react"
 import { Home } from "../pages"
 import { render } from "../utils/test-utils";
 
-// const user = {
-//     pseudo: "player 1",
-//   };
-  
-//   const scores = [
-//     {
-//       user: {
-//         pseudo: "player 1",
-//       },
-//       score: 24,
-//       difficulty: 'NORMAL',
-//     },
-//     {
-//       user: {
-//         pseudo: "player 2",
-//       },
-//       score: 45,
-//       difficulty: 'HARD',
-//     },
-//     {
-//       user: {
-//         pseudo: "player 1",
-//       },
-//       score: 5,
-//       difficulty: 'EASY',
-//     },
-//     {
-//       user: {
-//         pseudo: "player 1",
-//       },
-//       score: 67,
-//       difficulty: 'NORMAL',
-//     },
-//     {
-//       user: {
-//         pseudo: "player 1",
-//       },
-//       score: 78,
-//       difficulty: 'NORMAL',
-//     },
-//     {
-//       user: {
-//         pseudo: "player 2",
-//       },
-//       score: 2,
-//       difficulty: 'HARD',
-//     },
-//     {
-//       user: {
-//         pseudo: "player 1",
-//       },
-//       score: 167,
-//       difficulty: 'HARD',
-//     },
-//     {
-//       user: {
-//         pseudo: "player 3",
-//       },
-//       score: 90,
-//       difficulty: 'HARD',
-//     },
-//   ];
-
 test('presence of button easy difficulty', async () => {
     render(<Home />);
     await waitFor(() => {

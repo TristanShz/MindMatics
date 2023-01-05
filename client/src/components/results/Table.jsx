@@ -1,8 +1,11 @@
 import { useEffect, useState } from "react";
 
 function difficultyLevel(level) {
-    let levelTraduction = level === 1 ? 'EASY' : level === 2 ? 'NORMAL' : 'HARD';
-    return levelTraduction
+    switch(level) {
+        case 1: return 'EASY';
+        case 2: return 'NORMAL';
+        case 3: return 'HARD';
+    }
 }
 
 const Table = (props) => {
