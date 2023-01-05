@@ -2,7 +2,7 @@ import clsx from "clsx";
 
 const SelectableButton = ({ children, selected, className, ...props }) => {
   return (
-    <div
+    <button
       {...props}
       className={clsx(
         className,
@@ -14,7 +14,7 @@ const SelectableButton = ({ children, selected, className, ...props }) => {
       )}
     >
       {children}
-    </div>
+    </button>
   );
 };
 
