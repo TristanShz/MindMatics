@@ -3,7 +3,7 @@ const RegularLayout = (props) => {
     <>
       <main
         className={
-          "container mx-auto text-center p-4 sm:p-6 md:p-8 lg:p-12 xl:p-16"
+          "container mx-auto text-center p-4 sm:p-6 md:p-8 lg:p-12 xl:p-16 h-full"
         }
       >
         <div className={"fixed top-0 inset-0 bg-hero-pattern -z-20"} />

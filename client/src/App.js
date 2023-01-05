@@ -16,7 +16,6 @@ function App() {
     if (!session) navigate("/auth");
   }, [session]);
 
-  console.log("SESSION IN APP", session);
   return (
     <>
       <ToastContainer

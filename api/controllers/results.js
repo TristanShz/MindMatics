@@ -4,8 +4,8 @@ const utilsService = require("../services/utilsService");
 
 /**
  * get all results
- * @param {*} req 
- * @param {*} res 
+ * @param {*} req
+ * @param {*} res
  */
 exports.getAll = async (req, res) => {
     const results = await resultsService.getAll();
@@ -14,17 +14,14 @@ exports.getAll = async (req, res) => {
 
 /**
  * create Result
- * @param {*} req 
- * @param {*} res 
+ * @param {*} req
+ * @param {*} res
  */
 exports.create = async (req, res) => {
-    if (!req.body.userId || !req.body.score || !req.body.difficulty){
+    if (!req.body.username || !req.body.score || !req.body.difficulty){
         return res.status(400).json({error: 'At least one field is empty'});
     }
-    if (!utilsService.checkObjectId(req.body.userId)){
-        return res.status(400).json({error: 'ObjectId is not valid'});
-    }
-    const loggedUser = await usersService.get(req.body.userId);
+    const loggedUser = await usersService.getUserByUsername(req.body.username);
     if(!loggedUser){
         return res.status(404).json({error: 'No user matching id'});
     }
@@ -42,8 +39,8 @@ exports.create = async (req, res) => {
 
 /**
  * remove result using his id
- * @param {*} req 
- * @param {*} res 
+ * @param {*} req
+ * @param {*} res
  */
 exports.remove = async (req, res) => {
     if (!utilsService.checkObjectId(req.body.resultId)){
@@ -56,3 +53,5 @@ exports.remove = async (req, res) => {
     resultsService.remove(resultToDelete);
     return res.status(200);
   }
+  resultsService.remove(resultToDelete);
+};

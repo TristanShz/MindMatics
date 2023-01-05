@@ -1,18 +1,22 @@
-import { createContext, useContext, useState } from "react";
+import { createContext, useContext, useMemo, useState } from "react";
 
 const GameContext = createContext(null);
 
 const GameProvider = ({ children, gameState, setGameState }) => {
   const [difficulty, setDifficulty] = useState(undefined);
-  return (
-    <GameContext.Provider
-      value={{ gameState, setGameState, difficulty, setDifficulty }}
-    >
-      {children}
-    </GameContext.Provider>
-  );
+
+  const value = useMemo(() => {
+    return {
+      gameState,
+      setGameState,
+      difficulty,
+      setDifficulty,
+    };
+  }, [gameState, difficulty, setGameState, setDifficulty]);
+
+  return <GameContext.Provider value={value}>{children}</GameContext.Provider>;
 };
 
-const useGame = () => useContext(GameContext);
+const useGameContext = () => useContext(GameContext);
 
-export { GameProvider, useGame };
+export { GameProvider, useGameContext };
