@@ -52,6 +52,9 @@ Tests : Jest + React testing library (https://jestjs.io/fr/)
 - À la fin des 60 secondes on affiche le score ainsi que le détail des réponses à chaque calcul
 - L’utilisateur à la possibilité de sauvegarder ou non son score et peut relancer une partie.
 
+### Diagramme useCase
+![Untitled Diagram drawio (2)](https://user-images.githubusercontent.com/56965488/210798241-c1d3a8bf-7720-4c38-89bc-3faec97645bc.png)
+
 ### Authentification
 
 - Possibilité de s’inscrire et se connecter
