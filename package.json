@@ -7,7 +7,7 @@
     "test": "concurrently \"jest\" \"cross-env NODE_ENV=test npm run client-test\"",
     "client-test": "cd client && npm run test",
     "client-install": "cd client && npm install",
-    "start": "node server.js",
+    "start": "cross-env NODE_ENV=production node server.js",
     "server": "nodemon server.js",
     "client": "npm start --prefix client",
     "build": "npm run build --prefix client",

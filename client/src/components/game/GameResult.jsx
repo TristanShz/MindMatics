@@ -20,7 +20,7 @@ const GameResult = memo(({ result, resetGame }) => {
       .catch(() => {
         toast.error("Error while saving result");
       });
-  }, [result]);
+  }, [result, difficulty, navigate]);
   return (
     <div
       className={

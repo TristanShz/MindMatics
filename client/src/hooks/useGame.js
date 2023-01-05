@@ -7,7 +7,7 @@ export const useGame = (difficulty) => {
 
   const calculation = useMemo(() => {
     return gameUtils.generateRandomCalculation(difficulty);
-  }, [userAnswers]);
+  }, [userAnswers, difficulty]);
 
   return {
     calculation,

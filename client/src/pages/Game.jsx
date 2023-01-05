@@ -15,7 +15,7 @@ const GamePage = () => {
   const resetGame = useCallback(() => {
     setGameState(states.CHOOSE_DIFFICULTY);
     setGameResult(undefined);
-  }, []);
+  }, [states.CHOOSE_DIFFICULTY]);
 
   return (
     <div className={"w-full h-full"}>

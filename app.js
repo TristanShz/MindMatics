@@ -18,15 +18,16 @@ app.use(express.urlencoded({ extended: true }));
 
 app.use(cors({ origin: "*" }));
 
-app.use(express.static(path.join(__dirname, "client/build")));
-
 //Configuration des routes
 app.use(apiConfig.apiPath + "/results", router.results);
 app.use(apiConfig.apiPath + "/users", router.users);
 
-app.get("*", (req, res) => {
-  res.sendFile(path.join(__dirname, "client/build", "index.html"));
-});
+if (process.env.NODE_ENV === "production") {
+  app.use(express.static(path.join(__dirname, "client/build")));
+  app.get("*", (req, res) => {
+    res.sendFile(path.join(__dirname, "client/build", "index.html"));
+  });
+}
 
 app.get(apiConfig.apiPath, (req, res) => {
   res.status(200).send("Hello World!");

@@ -14,7 +14,7 @@ function App() {
 
   useEffect(() => {
     if (!session) navigate("/auth");
-  }, [session]);
+  }, [session, navigate]);
 
   return (
     <>

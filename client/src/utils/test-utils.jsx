@@ -5,7 +5,6 @@ import { getSessionCookie, SessionProvider } from "../context/SessionContext";
 
 const AllTheProviders = ({ children }) => {
   const [session, setSession] = useState(getSessionCookie());
-  console.log("SESSION IN TESTS ", session);
   return (
     <SessionProvider value={{ session, setSession }}>
       <BrowserRouter>{children}</BrowserRouter>
