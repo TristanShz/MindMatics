@@ -6,6 +6,7 @@ const checkJwtToken = require("../middlewares/checkJwtToken");
 router.get("/", resultController.getAll);
 
 router.post("/remove", resultController.remove);
+
 router.post("/create", checkJwtToken, resultController.create);
 
 module.exports = router;
