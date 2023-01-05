@@ -22,10 +22,10 @@ const Game = memo(({ setGameResult, setGameState }) => {
     userAnswers,
   } = useGame(difficulty);
 
-  // if (timer <= 0) {
-  //   setGameState(gameConfig.states.FINISH);
-  //   setGameResult({ userAnswers: userAnswers, score: score });
-  // }
+  if (timer <= 0) {
+    setGameState(gameConfig.states.FINISH);
+    setGameResult({ userAnswers: userAnswers, score: score });
+  }
 
   return (
     <div className={"w-full h-full flex flex-col items-center justify-center"}>
