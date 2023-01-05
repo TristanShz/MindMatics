@@ -34,7 +34,7 @@ const GameResult = memo(({ result, resetGame }) => {
           const isCorrect = answer.answer === answer.calculation.result;
           return (
             <div
-              key={index}
+              key={answer.calculation.formattedCalculation + index}
               className={"flex justify-between border-b border-slate-800 py-3"}
             >
               <p
