@@ -53,7 +53,8 @@ Tests : Jest + React testing library (https://jestjs.io/fr/)
 - L’utilisateur à la possibilité de sauvegarder ou non son score et peut relancer une partie.
 
 ### Diagramme useCase
-![Untitled Diagram drawio (2)](https://user-images.githubusercontent.com/56965488/210798241-c1d3a8bf-7720-4c38-89bc-3faec97645bc.png)
+![Untitled Diagram drawio (3)](https://user-images.githubusercontent.com/56965488/210810441-39a1cf71-7f50-45b1-b487-8212de4e267c.png)
+
 
 ### Authentification
 
@@ -143,6 +144,5 @@ Liaison avec la collection User par l'id de l'User
 Récupération de tous les résultats avec l'API puis affichage et filtres en front
 
 ## Architecture
-
-![schemaArchitectureMindMatics drawio (1)](https://user-images.githubusercontent.com/56965488/210797639-98bb729b-f5e5-422b-ad3a-6422706c6d21.png)
+![schemaArchitectureMindMatics drawio (3)](https://user-images.githubusercontent.com/56965488/210810381-cb6b5227-dc06-4693-b239-d9743fddbdef.png)
 
