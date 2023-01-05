@@ -4,64 +4,65 @@ export const handlers = [
     rest.get('http://localhost:3001/api/v1/results/', (req, res, ctx) => {
         return res(
             ctx.status(200),
-            ctx.json([
+            ctx.json(
+                {data : [
                     {
                         user: {
-                            pseudo: "player 1",
+                            username: "user-test",
                         },
                         score: 24,
-                        difficulty: 'NORMAL',
+                        difficulty: 2,
                     },
                     {
                         user: {
-                            pseudo: "player 2",
+                            username: "player 2",
                         },
                         score: 45,
-                        difficulty: 'HARD',
+                        difficulty: 3,
                     },
                     {
                         user: {
-                            pseudo: "player 1",
+                            username: "user-test",
                         },
                         score: 5,
-                        difficulty: 'EASY',
+                        difficulty: 1,
                     },
                     {
                         user: {
-                            pseudo: "player 1",
+                            username: "user-test",
                         },
                         score: 67,
-                        difficulty: 'NORMAL',
+                        difficulty: 2,
                     },
                     {
                         user: {
-                            pseudo: "player 1",
+                            username: "user-test",
                         },
                         score: 78,
-                        difficulty: 'NORMAL',
+                        difficulty: 2,
                     },
                     {
                         user: {
-                            pseudo: "player 2",
+                            username: "player 2",
                         },
                         score: 2,
-                        difficulty: 'HARD',
+                        difficulty: 3,
                     },
                     {
                         user: {
-                            pseudo: "player 1",
+                            username: "user-test",
                         },
                         score: 167,
-                        difficulty: 'HARD',
+                        difficulty: 3,
                     },
                     {
                         user: {
-                            pseudo: "player 3",
+                            username: "player 3",
                         },
                         score: 90,
-                        difficulty: 'HARD',
+                        difficulty: 3,
                     },
-                ]
+                ]}
             )
         )
     })

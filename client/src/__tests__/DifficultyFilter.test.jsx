@@ -24,57 +24,130 @@ test("verify table head", async () => {
   within(results.getAttributeNames("Difficulty"));
 });
 
-test("count of results", async () => {
-  render(<Home />);
-  expect(screen.getAllByTestId("gridRow").length).toBe(8);
-});
+test('verify the number of results and number of each difficulty', async () => {
+    render(<Home />);
+    const allResults = () => screen.findAllByTestId('gridRow');
+    const numberOfResults = await allResults();
+    expect(numberOfResults).toHaveLength(8);
 
-test("display of easy difficulty results when click on button easy", async () => {
-  render(<Home />);
-  const easyButton = screen.getByRole("button", { name: "EASY" });
-  fireEvent.click(easyButton);
-  const resultsCount = screen.getAllByTestId("gridRow").length;
-  const easyResults = screen.getAllByTestId("easyCell");
-  expect(easyResults).toHaveLength(resultsCount);
-});
+    const findEasyResults = () => screen.findAllByTestId('easyCell');
+    const easyResults = await findEasyResults();
+    expect(easyResults).toHaveLength(1)
 
-test("display of normal difficulty results when click on button normal", async () => {
-  render(<Home />);
-  const normalButton = screen.getByRole("button", { name: "NORMAL" });
-  fireEvent.click(normalButton);
-  const resultsCount = screen.getAllByTestId("gridRow").length;
-  const normalResults = screen.getAllByTestId("normalCell");
-  expect(normalResults).toHaveLength(resultsCount);
-});
+    const findNormalResults = () => screen.findAllByTestId('normalCell');
+    const normalResults = await findNormalResults();
+    expect(normalResults).toHaveLength(3);
 
-test("display of hard difficulty results when click on button hard", async () => {
-  render(<Home />);
-  const hardButton = screen.getByRole("button", { name: "HARD" });
-  fireEvent.click(hardButton);
-  const resultsCount = screen.getAllByTestId("gridRow").length;
-  const hardResults = screen.getAllByTestId("hardCell");
-  expect(hardResults).toHaveLength(resultsCount);
-});
+    const findHardResults = () => screen.findAllByTestId('hardCell');
+    const hardResults = await findHardResults();
+    expect(hardResults).toHaveLength(4);
+})
 
-test("display of all difficulty results when click on button all", async () => {
-  render(<Home />);
-  const hardButton = screen.getByRole("button", { name: "HARD" });
-  const allButton = screen.getByRole("button", { name: "ALL" });
-  fireEvent.click(hardButton);
-  const hardResults = screen.getAllByTestId("hardCell");
-  expect(hardResults).toHaveLength(4);
-  fireEvent.click(allButton);
-  const resultsCount = screen.getAllByTestId("gridRow");
-  expect(resultsCount).toHaveLength(8);
-});
+test('display of easy difficulty results when click on button easy',
+    async () => {
+        render(<Home />);
 
-test("display scores of player 1 when click on button see my results", async () => {
-  render(<Home />);
-  const playerResultsButton = screen.getByRole("button", {
-    name: "See my results",
-  });
-  fireEvent.click(playerResultsButton);
-  const resultsCount = screen.getAllByTestId("gridRow").length;
-  const playerResults = screen.getAllByTestId("player 1");
-  expect(playerResults).toHaveLength(resultsCount);
-});
+        const allResults = () => screen.findAllByTestId('gridRow');
+        const numberOfResults = await allResults();
+        expect(numberOfResults).toHaveLength(8);
+
+        const findEasyButton = () => screen.findByRole('button', { name: 'EASY' });
+        const easyButton = await findEasyButton();
+        fireEvent.click(easyButton);
+
+        const allEasyResults = () => screen.findAllByTestId('gridRow');
+        const numberOfEasyResults = await allEasyResults();
+
+        const findEasyResults = () => screen.findAllByTestId('easyCell');
+        const easyResults = await findEasyResults();
+        expect(easyResults).toHaveLength(numberOfEasyResults.length);
+    }
+)
+
+test('display of normal difficulty results when click on button normal',
+    async () => {
+        render(<Home />);
+        const allResults = () => screen.findAllByTestId('gridRow');
+        const numberOfResults = await allResults();
+        expect(numberOfResults).toHaveLength(8);
+
+        const findNormalButton = () => screen.findByRole('button', { name: 'NORMAL' });
+        const normalButton = await findNormalButton();
+        fireEvent.click(normalButton);
+
+        const allNormalResults = () => screen.findAllByTestId('gridRow');
+        const numberOfNormalResults = await allNormalResults();
+
+        const findNormalResults = () => screen.findAllByTestId('normalCell');
+        const normalResults = await findNormalResults();
+        expect(normalResults).toHaveLength(numberOfNormalResults.length);
+    }
+)
+
+test('display of hard difficulty results when click on button hard',
+    async () => {
+        render(<Home />);
+        const allResults = () => screen.findAllByTestId('gridRow');
+        const numberOfResults = await allResults();
+        expect(numberOfResults).toHaveLength(8);
+
+        const findHardButton = () => screen.findByRole('button', { name: 'HARD' });
+        const hardButton = await findHardButton();
+        fireEvent.click(hardButton);
+
+        const allHardResults = () => screen.findAllByTestId('gridRow');
+        const numberOfHardResults = await allHardResults();
+
+        const findHardResults = () => screen.findAllByTestId('hardCell');
+        const hardResults = await findHardResults();
+        expect(hardResults).toHaveLength(numberOfHardResults.length);
+    }
+)
+
+test('display of all difficulty results after click on hard button then on all button',
+    async () => {
+        render(<Home />);
+        const allResults = () => screen.findAllByTestId('gridRow');
+        const numberOfResults = await allResults();
+        expect(numberOfResults).toHaveLength(8);
+
+        const findHardButton = () => screen.findByRole('button', { name: 'HARD' });
+        const hardButton = await findHardButton();
+        fireEvent.click(hardButton);
+
+        const allHardResults = () => screen.findAllByTestId('gridRow');
+        const numberOfHardResults = await allHardResults();
+
+        const findHardResults = () => screen.findAllByTestId('hardCell');
+        const hardResults = await findHardResults();
+        expect(hardResults).toHaveLength(numberOfHardResults.length);
+
+        const findAllButton = () => screen.findByRole('button', { name: 'ALL' });
+        const allButton = await findAllButton();
+        fireEvent.click(allButton);
+
+        const resultsCount = screen.getAllByTestId('gridRow');
+        expect(resultsCount).toHaveLength(8);
+    }
+)
+
+test('display scores of player 1 when click on button See my results',
+    async () => {
+        render(<Home />);
+
+        const allResults = () => screen.findAllByTestId('gridRow');
+        const numberOfResults = await allResults();
+        expect(numberOfResults).toHaveLength(8);
+
+        const getPlayerResultsButton = () => screen.findByRole('button', { name: 'See my results' });
+        const playerResultButton = await getPlayerResultsButton();
+        fireEvent.click(playerResultButton);
+
+        const getResultsCount = () => screen.findAllByTestId('gridRow');
+        const resultsCount = await getResultsCount();
+
+        const getPlayerResults = () => screen.findAllByTestId('user-test');
+        const playerResults = await getPlayerResults();
+        expect(playerResults).toHaveLength(resultsCount.length);
+    }
+)

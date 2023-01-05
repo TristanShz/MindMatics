@@ -87,7 +87,7 @@ const Table = (props) => {
                         </td>
                         <td
                           className="text-sm text-gray-900 font-light px-6 py-4 whitespace-nowrap text-left"
-                          data-testid={r.user.pseudo}
+                          data-testid={r.user.username}
                         >
                           {r.user.username}
                         </td>
@@ -97,9 +97,9 @@ const Table = (props) => {
                         <td
                           className="text-sm text-gray-900 font-light px-6 py-4 whitespace-nowrap text-left"
                           data-testid={
-                            r.difficulty === "EASY"
+                            difficultyLevel(r.difficulty) === "EASY"
                               ? "easyCell"
-                              : r.difficulty === "NORMAL"
+                              : difficultyLevel(r.difficulty) === "NORMAL"
                               ? "normalCell"
                               : "hardCell"
                           }
