@@ -147,8 +147,8 @@ test('display scores of player 1 when click on button See my results',
         const resultsCount = await getResultsCount();
         expect(resultsCount).toHaveLength(5);
 
-        // const getPlayerResults = () => screen.findAllByTestId('user-test');
-        // const playerResults = await getPlayerResults();
-        // expect(playerResults).toHaveLength(resultsCount.length);
+        const getPlayerResults = () => screen.findAllByTestId('user-test');
+        const playerResults = await getPlayerResults();
+        expect(playerResults).toHaveLength(resultsCount.length);
     }
 )
