@@ -62,38 +62,38 @@ export const gameConfig = {
     },
     NORMAL: {
       ADDITION: {
-        MIN: 1,
-        MAX: 99,
+        MIN: 99,
+        MAX: 499,
       },
       SUBTRACTION: {
-        MIN: 1,
-        MAX: 99,
+        MIN: 99,
+        MAX: 499,
       },
       MULTIPLICATION: {
-        MIN: 1,
-        MAX: 10,
+        MIN: 5,
+        MAX: 15,
       },
       DIVISION: {
-        MIN: 2,
-        MAX: 10,
+        MIN: 5,
+        MAX: 15,
       },
     },
     HARD: {
       ADDITION: {
-        MIN: 1,
-        MAX: 99,
+        MIN: 499,
+        MAX: 999,
       },
       SUBTRACTION: {
-        MIN: 1,
-        MAX: 99,
+        MIN: 499,
+        MAX: 999,
       },
       MULTIPLICATION: {
-        MIN: 1,
-        MAX: 10,
+        MIN: 11,
+        MAX: 20,
       },
       DIVISION: {
-        MIN: 2,
-        MAX: 10,
+        MIN: 11,
+        MAX: 20,
       },
     },
   },
