@@ -140,5 +140,6 @@ Liaison avec la collection User par l'id de l'User
 Récupération de tous les résultats avec l'API puis affichage et filtres en front
 
 ## Architecture
-![schemaArchitectureMindMatics drawio](https://user-images.githubusercontent.com/56965488/210797501-c88a7abe-666a-4534-a75e-4f65cc253a2d.png)
+
+![schemaArchitectureMindMatics drawio (1)](https://user-images.githubusercontent.com/56965488/210797639-98bb729b-f5e5-422b-ad3a-6422706c6d21.png)
 
