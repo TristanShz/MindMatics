@@ -8,17 +8,16 @@ Après avoir cloné le projet, effectuer les commandes suivantes :
 
 ```bash
 npm install && npm client-install
+```
+
+Démarrer le projet :
+```bash
 npm run dev
 ```
-## Lancer le projet en local
 
-Pour lancer les tests back end
+Pour lancer les tests
 ```bash
-npm test
-```
-Pour lancer les tests front 
-```bash
-npm run client-test
+npm run test
 ```
 
 ## Technologies utilisées
