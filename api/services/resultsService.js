@@ -5,7 +5,7 @@ exports.getLeaderboard = () => {
     .populate("user")
     .select({ user: 1, score: 1, difficulty: 1 })
     .sort({ score: -1 })
-    .limit(50)
+    .limit(100)
     .exec();
 };
 
