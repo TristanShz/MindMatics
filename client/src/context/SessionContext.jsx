@@ -10,8 +10,9 @@ export const getSessionCookie = () => {
   const sessionCookie = Cookies.get("session");
   if (process.env.NODE_ENV === "test") {
     return {
-      id: "63b6aaf4d21420ed6e771d99",
-      username: "user-test",
+      id: process.env.TEST_USER_ID,
+      username: process.env.TEST_USER_USERNAME,
+      token: process.env.TEST_USER_TOKEN,
     };
   }
   if (sessionCookie === undefined) {

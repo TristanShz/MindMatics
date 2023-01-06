@@ -1,5 +1,5 @@
-const request = require("supertest");
 const app = require("../../../app");
+const request = require("supertest");
 const apiConfig = require("../../../api/_config/apiConfig");
 
 describe("Test results routes", () => {

@@ -19,16 +19,16 @@ app.use(express.urlencoded({ extended: true }));
 app.use(cors({ origin: process.env.APP_URL, credentials: true }));
 
 //Configuration des routes
+app.get(apiConfig.apiPath + "/ping", (req, res) => {
+  res.status(200).send("Hello World!");
+});
+
 app.use(apiConfig.apiPath + "/results", router.results);
 app.use(apiConfig.apiPath + "/users", router.users);
 
 app.use(express.static(path.join(__dirname, "client/build")));
 app.get("*", (req, res) => {
   res.sendFile(path.join(__dirname, "client/build", "index.html"));
-});
-
-app.get(apiConfig.apiPath, (req, res) => {
-  res.status(200).send("Hello World!");
 });
 
 module.exports = app;

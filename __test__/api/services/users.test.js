@@ -2,38 +2,38 @@ const request = require("supertest");
 const app = require("../../../app");
 const apiConfig = require("../../../api/_config/apiConfig");
 
+const usernameTest = process.env.TEST_USER_USERNAME;
+const passwordTest = process.env.TEST_USER_PASSWORD;
+
+beforeAll(() => {
+  request(app)
+    .post(apiConfig.apiPath + "/users/register")
+    .send({
+      username: usernameTest,
+      password: passwordTest,
+    })
+    .then((res) => res);
+});
+
 describe("Test users routes", () => {
-
-  const usernameTest = "userTest";
-  const passwordTest = "passwordTest";
-
-  beforeAll(() => {
-    request(app)
-      .post(apiConfig.apiPath + "/users/register")
-      .send({
-        username: usernameTest,
-        password: passwordTest,
-      });
-  });
-
   test("Try to login using wrong data, it should response error using the POST method login", () => {
     return request(app)
       .post(apiConfig.apiPath + "/users/login")
       .send({
-        username: 'nonexistant',
-        password: 'nonexistant',
+        username: "nonexistant",
+        password: "nonexistant",
       })
       .then((response) => {
         expect(response.statusCode).toBe(404);
       });
-  });  
+  });
 
   test("Try to login using wrong password, it should response error using the POST method login", () => {
     return request(app)
       .post(apiConfig.apiPath + "/users/login")
       .send({
         username: usernameTest,
-        password: 'wrongPassword',
+        password: "wrongPassword",
       })
       .then((response) => {
         expect(response.statusCode).toBe(400);
@@ -50,7 +50,7 @@ describe("Test users routes", () => {
       .then((response) => {
         expect(response.statusCode).toBe(200);
       });
-  });  
+  });
 
   test("It should response the user data using the GET method getUserByUsername", () => {
     return request(app)
@@ -78,5 +78,4 @@ describe("Test users routes", () => {
         expect(response.statusCode).toBe(200);
       });
   });
-
 });
