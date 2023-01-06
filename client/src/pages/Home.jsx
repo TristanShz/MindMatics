@@ -52,7 +52,7 @@ const Home = () => {
         </div>
         <div className={"flex flex-col gap-12"}>
           <TitleBlock />
-          <h3>Want to be mentally challenged ?</h3>
+          <h3>Want to be mental(l)y challenged ?</h3>
           <Link to={ROUTES.game}>
             <Button large>Start game</Button>
           </Link>
