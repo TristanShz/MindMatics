@@ -12,16 +12,16 @@ export const gameConfig = {
       DIVISION: 15,
     },
     NORMAL: {
-      ADDITION: 15,
-      SUBTRACTION: 15,
-      MULTIPLICATION: 20,
-      DIVISION: 20,
-    },
-    HARD: {
       ADDITION: 20,
       SUBTRACTION: 20,
       MULTIPLICATION: 25,
       DIVISION: 25,
+    },
+    HARD: {
+      ADDITION: 30,
+      SUBTRACTION: 30,
+      MULTIPLICATION: 35,
+      DIVISION: 35,
     },
   },
   difficulties: {

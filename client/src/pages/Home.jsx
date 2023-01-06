@@ -59,7 +59,7 @@ const Home = () => {
         </div>
       </div>
       <div className={"flex flex-col gap-8"}>
-        <h2>Classement</h2>
+        <h2>Leaderboard (top 100)</h2>
         <div className="flex justify-between gap-2">
           <SelectPlayer
             setPlayerSelected={setPlayerSelected}
